@@ -48,10 +48,5 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-pacwall &
 picom &
-exec i3 &
-KBD_INIT_DELAY=140
-KBD_CHARS_PER_SEC=50
-xset r rate $KBD_INIT_DELAY $KBD_CHARS_PER_SEC &
-xbindkeys &
+exec i3

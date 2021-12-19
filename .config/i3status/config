@@ -48,7 +48,7 @@ battery all {
 volume master {
         format = "|  ♪: %volume  |"
         format_muted = "|  ♪: muted  |"
-        device = "default"
+        device = "sysdefault"
         mixer = "Master"
         mixer_idx = 0
 }
