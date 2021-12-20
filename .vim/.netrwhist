@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/silas/.i3'
+let g:netrw_dirhist_5='/home/silas/config_files_linux/.config/systemd/user'
+let g:netrw_dirhist_4='/home/silas/.config/i3status'
 let g:netrw_dirhist_3='/etc/systemd/system'
 let g:netrw_dirhist_2='/home/silas/.config/kitty'
 let g:netrw_dirhist_1='/home/silas/ConfigScripts_Manjaro/Keyboard'
