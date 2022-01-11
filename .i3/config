@@ -115,7 +115,7 @@ mode "$display_settings" {
     # Keybindings for display configs
     bindsym d exec $config_scripts_dir/Display/desktop.sh, mode "default"
     bindsym m exec $config_scripts_dir/Display/mobile.sh, mode "default"
-	
+
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -124,6 +124,8 @@ mode "$display_settings" {
 # Applications
 bindsym $mod+a exec --no-startup-id prime-run kitty
 bindsym $mod+s exec --no-startup-id brave
+bindsym $mod+Shift+s exec --no-startup-id spotify
+
 
 ####################################################################################
 # Window/Workspace Controls
@@ -266,7 +268,7 @@ bar {
         separator  #201f1b
 
         #                  border  backgr. text
-        focused_workspace  #201f1b #fcba04 #000000
+        focused_workspace  #201f1b #fcba04 #201f1b
         active_workspace   #201f1b #201f1b #f2f2db
         inactive_workspace #201f1b #201f1b #f2f2db
         binding_mode       #201f1b #da0000 #f2f2db 		#colors for mode choices windows
@@ -276,10 +278,10 @@ bar {
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #201f1b #80FFF9 #FDF6E3
-  client.focused_inactive #2F3D44 #201f1b #1ABC9C #454948
-  client.unfocused        #2F3D44 #201f1b #1ABC9C #454948
-  client.urgent           #CB4B16 #201f1b #1ABC9C #268BD2
-  client.placeholder      #000000 #201f1b #ffffff #000000 
+  client.focused          #201f1b #fcba04 #201f1b #FDF6E3
+  client.focused_inactive #201f1b #201f1b #f2f2db #454948
+  client.unfocused        #201f1b #201f1b #f2f2db #454948
+  client.urgent           #201f1b #201f1b #1ABC9C #268BD2
+  client.placeholder      #201f1b #201f1b #f2f2db #000000 
 
   client.background       #2B2C2B
