@@ -81,9 +81,9 @@ mode "$system_operation" {
 ####################################################################################
 # i3 Autostart
 ####################################################################################
-exec --no-startup-id xset r rate 150 40
+exec --no-startup-id xset r rate 150 35
 exec --no-startup-id xbindkeys
-exec --no-startup-id nitrogen --restore
+exec --no-startup-id ~/.fehbg
 
 ####################################################################################
 # i3 Properties for Applications
@@ -101,6 +101,7 @@ for_window [urgent=latest] focus
 # Set Floating Applications
 for_window [title="i3_help"] floating enable sticky enable border normal
 for_window [class="Oblogout"] fullscreen enable
+for_window [title="^zoom$" class="[zoom]*"] floating enable
 
 ####################################################################################
 # Custom Keybindings

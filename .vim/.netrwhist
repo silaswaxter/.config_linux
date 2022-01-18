@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/silas/config_files_linux/.config/kitty'
 let g:netrw_dirhist_6='/home/silas/.i3'
 let g:netrw_dirhist_5='/home/silas/config_files_linux/.config/systemd/user'
 let g:netrw_dirhist_4='/home/silas/.config/i3status'
