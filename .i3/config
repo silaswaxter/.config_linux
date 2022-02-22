@@ -32,23 +32,15 @@
 # 		-----
 # 		$asdf = "/home/silaswaxter"
 # 		$testfile = "test.txt"
-####################################################################################
-
-
-####################################################################################
-# i3 Variables
-####################################################################################
-# Set mod key (Mod1=<Alt>, Mod4=<Super>)
-set $mod Mod4
-
-set $config_scripts_dir ~/.my_config_scripts
 
 ####################################################################################
 # i3 Meta
 ####################################################################################
+# Set mod key (Mod1=<Alt>, Mod4=<Super>)
+set $mod Mod4
+
 # reload/restart i3
-bindsym $mod+Shift+c reload; exec notify-send -t 1000 "i3-config Reloaded"
-bindsym $mod+Shift+r restart;
+bindsym $mod+Shift+r restart; exec notify-send -t 1000 "Restarted i3wm"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -56,13 +48,6 @@ bindsym $mod+Shift+q kill
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
-# Start Menus
-    # search menu
-    bindsym $mod+ctrl+d exec --no-startup-id dmenu_run
-
-####################################################################################
-# i3 System Controls
-####################################################################################
 #System Operation Menu
 set $system_operation (h)ibernate, (e)xit_session, (r)eboot, (s)uspend, (S)hutdown
 bindsym $mod+Delete mode "$system_operation"
@@ -81,79 +66,47 @@ mode "$system_operation" {
 ####################################################################################
 # i3 Autostart
 ####################################################################################
+exec --no-startup-id picom --backend glx --experimental-backend --xrender-sync-fence -b
 exec --no-startup-id xset r rate 150 35
 exec --no-startup-id xbindkeys
 exec --no-startup-id ~/.fehbg
+exec --no-startup-id ~/.screenlayout/home_office.sh
 
 ####################################################################################
-# i3 Properties for Applications
+# i3 Keybindings
+####################################################################################
+# Configure Displays
+bindsym $mod+u exec ~/.screenlayout/auto_display.sh
+
+# Applications
+bindsym $mod+Return exec --no-startup-id rofi -show run
+bindsym $mod+a exec --no-startup-id alacritty
+bindsym $mod+s exec --no-startup-id brave
+bindsym $mod+Shift+s exec --no-startup-id spotify
+
+####################################################################################
+# i3 Acting on Window Properities
 ####################################################################################
 # switch to urgent windows
 for_window [urgent=latest] focus
 
-# Default Workspaces
-#assign [class="URxvt"] $ws1
-#assign [class="Chromium"] $ws2
-
-# Container Settings
-#for_window [class="Chromium"] layout tabbed
-
 # Set Floating Applications
-for_window [title="i3_help"] floating enable sticky enable border normal
 for_window [class="Oblogout"] fullscreen enable
 for_window [title="^zoom$" class="[zoom]*"] floating enable
 
 ####################################################################################
-# Custom Keybindings
-####################################################################################
-# Configure Displays
-set $display_settings (a)randr, (d)esktop, (m)obile
-bindsym $mod+Shift+z mode "$display_settings"
-mode "$display_settings" {
-    # Launch arandr display manager
-    bindsym a exec --no-startup-id arandr, mode "default"
-
-    # Keybindings for display configs
-    bindsym d exec $config_scripts_dir/Display/desktop.sh, mode "default"
-    bindsym m exec $config_scripts_dir/Display/mobile.sh, mode "default"
-
-    # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-# Applications
-bindsym $mod+a exec --no-startup-id prime-run kitty
-bindsym $mod+s exec --no-startup-id brave
-bindsym $mod+Shift+s exec --no-startup-id spotify
-
-
-####################################################################################
 # Window/Workspace Controls
 ####################################################################################
-# toggle alternate views 
-    # fullscreen
-    bindsym $mod+Shift+f fullscreen toggle
-    # floating
-    bindsym $mod+Shift+space floating toggle
+# fullscreen
+bindsym $mod+Shift+f fullscreen toggle
 
-# floating settings toggles
-    # focus (tiled & floating windows)
-    bindsym $mod+space focus mode_toggle
-    # sticky (stick to screen when changing workspace)
-    bindsym $mod+Shift+t sticky toggle
-
-# scratchpad
-    # move window to scratchpad
-    bindsym $mod+Shift+minus move scratchpad
-    # show next scratchpad window or hide scratchpad
-    bindsym $mod+minus scratchpad show
+# floating
+bindsym $mod+space floating toggle
 
 # toggle tilling orientation
 bindsym $mod+Tab split toggle; exec notify-send -t 1000 'toggled tiling'
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+o layout stacking
 bindsym $mod+i layout tabbed
 bindsym $mod+p layout toggle split
 
@@ -168,9 +121,6 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# move workspace to another workspace ("rename" workspace)
-bindsym $mod+Shift+Ctrl+1 move [workspace=$ws1] to workspace $ws1
 
 # move workspace to another display
 bindsym $mod+Shift+Ctrl+h move workspace to output left
@@ -243,14 +193,31 @@ mode "resize" {
 # Styling Settings (note: colors & fonts at bot.)
 ####################################################################################
 # Borders
-    default_border pixel 1
+    default_border pixel 3
     default_floating_border normal
     # draw borders on conatainer only when NOT only container on workspace
-    smart_borders on 
+    smart_borders on
 
 # Font for window titles. 
-    # (Will also used by bar unless a different font is used in the bar {} block.)
-    font xft:URWGothic-Book 12
+# (Will also used by bar unless a different font is used in the bar {} block.)
+font xft:LiberationSans 12
+
+set $nord0 #2E3440
+set $nord1 #3B4252
+set $nord2 #434C5E
+set $nord3 #4C566A
+set $nord4 #D8DEE9
+set $nord5 #E5E9F0
+set $nord6 #ECEFF4
+set $nord7 #8FBCBB
+set $nord8 #88C0D0
+set $nord9 #81A1C1
+set $nord10 #5E81AC
+set $nord11 #BF616A
+set $nord12 #D08770
+set $nord13 #EBCB8B
+set $nord14 #A3BE8C
+set $nord15 #B48EAD
 
 # Start i3bar to display a workspace bar 
 # (plus the system information i3status if available)
@@ -264,25 +231,27 @@ bar {
 	strip_workspace_numbers yes
 
     colors {
-        background #201f1b
-        statusline #f2f2db
-        separator  #201f1b
+        background $nord2
+        statusline $nord5
+        separator  $nord2
 
         #                  border  backgr. text
-        focused_workspace  #201f1b #fcba04 #201f1b
-        active_workspace   #201f1b #201f1b #f2f2db
-        inactive_workspace #201f1b #201f1b #f2f2db
-        binding_mode       #201f1b #da0000 #f2f2db 		#colors for mode choices windows
-        urgent_workspace   #201f1b #da0000 #f2f2db
+        focused_workspace  $nord10 $nord10 $nord1
+        active_workspace   $nord9  $nord9  $nord1
+        inactive_workspace $nord2  $nord2  $nord5
+        binding_mode       $nord11 $nord11 $nord5
+	#colors for mode choices windows
+        urgent_workspace   $nord11 $nord11 $nord5
+
     }
 }
 
 # Theme colors
-# class                   border  backgr. text    indic.   child_border
-  client.focused          #201f1b #fcba04 #201f1b #FDF6E3
-  client.focused_inactive #201f1b #201f1b #f2f2db #454948
-  client.unfocused        #201f1b #201f1b #f2f2db #454948
-  client.urgent           #201f1b #201f1b #1ABC9C #268BD2
-  client.placeholder      #201f1b #201f1b #f2f2db #000000 
+# class                   border  backgr. text    indic.  child_border
+  client.focused          $nord9  $nord9  $nord1  
+  client.focused_inactive $nord0  $nord0  $nord5  
+  client.unfocused        $nord0  $nord0  $nord5  
+  client.urgent           $nord11 $nord11 $nord5
+  client.placeholder      $nord0  $nord0  $nord5 
 
-  client.background       #2B2C2B
+  client.background       #ffffff

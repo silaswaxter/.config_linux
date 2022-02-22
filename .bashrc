@@ -5,12 +5,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Primary Prompt Variable (the stuff at the start of the cli)
+PS1='\W > '
+
+# Aliases
+alias terminal='alacritty &'
 alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
+alias ll='ls -la'
 
-alias icat="kitty +kitten icat"
-
-
-# BEGIN_KITTY_SHELL_INTEGRATION
-if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
-# END_KITTY_SHELL_INTEGRATION

@@ -1,38 +1,54 @@
 # i3status configuration file.
-# see "man i3status" for documentation.
-
+# ---------------------------------------
 # It is important that this file is edited as UTF-8.
 # The following line should contain a sharp s:
 # ß
-# If the above line is not correctly displayed, fix your editor first!
+
+# Nord Color Palette
+#set $nord0 #2E3440
+#set $nord1 #3B4252
+#set $nord2 #434C5E
+#set $nord3 #4C566A
+#set $nord4 #D8DEE9
+#set $nord5 #E5E9F0
+#set $nord6 #ECEFF4
+#set $nord7 #8FBCBB
+#set $nord8 #88C0D0
+#set $nord9 #81A1C1
+#set $nord10 #5E81AC
+#set $nord11 #BF616A
+#set $nord12 #D08770
+#set $nord13 #EBCB8B
+#set $nord14 #A3BE8C
+#set $nord15 #B48EAD
 
 general {
         colors = true
-	color_good = "#c0d600"
-	color_degraded = "#4e431d"
-	color_bad = "#da0000"
+	color_good = "#a3be8c"
+	color_degraded = "#ebcb8b"
+	color_bad = "#d08770"
         interval = 5
 }
 
+#order += "memory"
 order += "wireless _first_"
 order += "ethernet _first_"
-order += "memory"
 order += "battery all"
 order += "volume master"
 order += "tztime local"
 
 wireless _first_ {
-        format_up = "W:  %essid %quality"
-        format_down = "W:  down"
+        format_up = " %essid %quality "
+        format_down = " wifi down "
 }
 
 ethernet _first_ {
-        format_up = "  E:  (%speed)"
+        format_up = " %speed "
         format_down = ""
 }
 
 memory {
-        format = "|  M: %used/%available  |"
+        format = " %used/%available "
         threshold_degraded = "15%"
         threshold_critical = "5%"
 }
@@ -42,17 +58,17 @@ battery all {
 	low_threshold = "10"
 	integer_battery_capacity = "true"
 	last_full_capacity = "true"
-        format = "B:  %percentage,  %remaining left"
+        format = " %percentage %remaining left "
 }
 
 volume master {
-        format = "|  ♪: %volume  |"
-        format_muted = "|  ♪: muted  |"
+        format = " %volume"
+        format_muted = " muted"
         device = "default"
         mixer = "Master"
         mixer_idx = 0
 }
 
 tztime local {
-        format = "%A, %B %d  %I:%M %P"
+        format = " %A, %B %d  %I:%M %P"
 }
