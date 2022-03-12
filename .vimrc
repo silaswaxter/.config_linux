@@ -22,3 +22,8 @@ call plug#end()
 
 " Set colorscheme to nordic
 colorscheme nord
+
+
+"Custom Settings
+set ts=4 sw=4
+set colorcolumn=100
