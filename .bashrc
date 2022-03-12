@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 # Primary Prompt Variable (the stuff at the start of the cli)
-PS1='\W > '
+PS1='\e[1;36m[\W]$\e[m '
 
 # Aliases
 alias terminal='alacritty &'
