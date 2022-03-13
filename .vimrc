@@ -27,3 +27,6 @@ colorscheme nord
 "Custom Settings
 set ts=4 sw=4
 set colorcolumn=100
+"display current file in statusbar
+set laststatus=2
+set statusline+=%F
