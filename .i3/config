@@ -83,6 +83,7 @@ bindsym $mod+Return exec --no-startup-id rofi -show run
 bindsym $mod+a exec --no-startup-id alacritty
 bindsym $mod+s exec --no-startup-id brave
 bindsym $mod+Shift+s exec --no-startup-id spotify
+bindsym $mod+d exec --no-startup-id zathura
 
 ####################################################################################
 # i3 Acting on Window Properities

@@ -146,16 +146,16 @@ colors:
     cursor: '#d8dee9'
 
   selection:
-    text: CellForeground
-    background: '#4c566a'
+    text: '#2E3440'
+    background: '#D08770'
 
-  search:
-    matches:
-      foreground: CellBackground
-      background: '#88c0d0'
-    bar:
-      background: '#434c5e'
-      foreground: '#d8dee9'
+      #search:
+      #matches:
+      #foreground: CellBackground
+      #background: '#88c0d0'
+      #bar:
+      #background: '#EBCB8B'
+      #foreground: '#D08770'
 
   normal:
     black: '#3b4252'
