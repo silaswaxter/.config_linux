@@ -1,3 +1,6 @@
+""""""""""
+" Plug-In Settings
+""""""""""
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
 	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -19,13 +22,17 @@ Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 
-
+""""""""""
+" Vim settings
+""""""""""
 " Set colorscheme to nordic
 colorscheme nord
 
 
 "Custom Settings
-set ts=4 sw=4
+set expandtab
+set tabstop=4
+set shiftwidth=4
 set colorcolumn=100
 "display current file in statusbar
 set laststatus=2
