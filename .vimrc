@@ -25,15 +25,22 @@ call plug#end()
 """"""""""
 " Vim settings
 """"""""""
-" Set colorscheme to nordic
 colorscheme nord
 
-
-"Custom Settings
 set expandtab
 set tabstop=4
 set shiftwidth=4
 set colorcolumn=100
+
+"spell check
+set spell spelllang=en_us
+
+"set primary buffer
+set clipboard=unnamedplus
+
+"hybrid line numbers
+set number relativenumber
+
 "display current file in statusbar
 set laststatus=2
 set statusline+=%F

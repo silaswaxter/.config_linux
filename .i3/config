@@ -21,7 +21,7 @@
 #       will throw an error; i3wm recognizes the "fullscreen" from the comment.
 #
 # It seems as though variables do not act as "simple" or "recursive" variables from
-# make, rather each variable "set" statement is evaluated independantly.
+# make, rather each variable "set" statement is evaluated independently.
 # 	EXAMPLE:
 # 		INPUT
 # 		------
@@ -52,10 +52,10 @@ floating_modifier $mod
 set $system_operation (h)ibernate, (e)xit_session, (r)eboot, (s)uspend, (S)hutdown
 bindsym $mod+Delete mode "$system_operation"
 mode "$system_operation" {
-    bindsym h exec --no-startup-id systemctl hibernate, mode "default"
+    bindsym h exec --no-startup-id xss-lock -l -- physlock & systemctl hibernate, mode "default"
     bindsym e exec --no-startup-id pkill -KILL -u $(who | sed -e 's/\s.*$//'), mode "default"
     bindsym r exec --no-startup-id shutdown -r now, mode "default"
-    bindsym s exec --no-startup-id systemctl suspend, mode "default"
+    bindsym s exec --no-startup-id xss-lock -l -- physlock & systemctl suspend, mode "default"
     bindsym Shift+s exec --no-startup-id shutdown now, mode "default"
 
     # exit system mode: "Enter" or "Escape
