@@ -1,0 +1,2 @@
+should create a script that captures explicit packages from pacman and yay.
+Ensure that it ignores packages specified by ignore file.

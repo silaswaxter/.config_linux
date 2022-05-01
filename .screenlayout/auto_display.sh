@@ -1,6 +1,6 @@
 #!/bin/sh
 # This script automatically determines what displays are
-# connected and runs the appropiate display script
+# connected and runs the appropriate display script
 DISPLAY_SCRIPT_DIR="/home/silas/.screenlayout"
 
 #Store xrandr connected output as an array
@@ -11,7 +11,7 @@ CONNECTED_DISPLAYS_ARR=(${CONNECTED_DISPLAYS})
 DISPLAY_FLAG="mobile"
 for i in ${CONNECTED_DISPLAYS_ARR[@]}
 do
-	if [ $i = "HDMI-1" ]
+	if [ $i = "HDMI2" ]
 	then
 		DISPLAY_FLAG="desk"
 	fi

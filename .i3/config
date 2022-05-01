@@ -69,8 +69,6 @@ mode "$system_operation" {
 exec --no-startup-id picom --backend glx --experimental-backend --xrender-sync-fence -b
 exec --no-startup-id xset r rate 150 35
 exec --no-startup-id xbindkeys
-exec --no-startup-id ~/.fehbg
-exec --no-startup-id ~/.screenlayout/home_office.sh
 
 ####################################################################################
 # i3 Keybindings

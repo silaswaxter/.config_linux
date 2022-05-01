@@ -1,0 +1,20 @@
+The following method installs a gui to create the appropriate network profile (writing to a file 
+somewhere) and then removes the gui.
+Quickest Way:
+    1) install frontend for NetworkManager (package network-manager-applet)
+    2) run nm-connection-editor
+    3) fill in the following:
+             TAB            SETTING NAME                        VALUE
+        - Wi-Fi             ssid                            =   "eduroam"
+        - Wi-Fi Security    Security                        =   "WPA & WPA2 Enterprise"
+        - Wi-Fi Security    Authentication                  =   "Protected EAP (PEAP)"
+        - Wi-Fi Security    "No CA certificate is required" =   CHECKED
+        - Wi-Fi Security    PEAP version                    =   Automatic
+        - Wi-Fi Security    Inner Authentication            =   MSCHAPv2
+        - Wi-Fi Security    Username                        =   "YOUR_USERNAME_HERE"
+        - Wi-Fi Security    Password                        =   "YOUR_PASSWORD_HERE"
+    4) remove network-manager-applet b/c gui is gross and I'm not a soy-dev (hahaha)
+
+This method could be improved, but Oregon State Univeristy is stupid and does not have an install
+script (see https://cat.eduroam.org/);  I've spent like 2 hours trying to get this to work without
+using a gui, and I'm caving in.  
