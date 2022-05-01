@@ -1,0 +1,9 @@
+[core]
+	editor = vim
+[init]
+	defaultBranch = main
+[user]
+	name = Silas Waxter
+    email = silaswaxter@gmail.com
+[includeIf "gitdir:~/Workspace/school/"]
+    path = ~/.gitconfig-school
