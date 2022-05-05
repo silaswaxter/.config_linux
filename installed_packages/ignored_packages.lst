@@ -1,0 +1,5 @@
+#####
+# List of package names to ignore when creating list of installed packages
+#####
+yay
+google-chrome

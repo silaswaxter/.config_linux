@@ -1,0 +1,27 @@
+Added Fetch Installed Packages Script
+
+Created a script that fetches the explicitly installed foreign and
+non-foreign (includes yay pkgs) and stores this data in a list;  the
+script filters against an ignore packages file.  
+
+A pre-commit git hook was created in the git_hooks/
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	modified:   .gitignore
+#	modified:   README.md
+#	deleted:    TODO.txt
+#	new file:   git_hooks/pre-commit
+#	new file:   installed_packages/fetch_installed_packages_list.sh
+#	new file:   installed_packages/foreign_pkglist.lst
+#	new file:   installed_packages/ignored_packages.lst
+#	new file:   installed_packages/pacman_pkglist.lst
+#	renamed:    notes_to_self/USB_Blaster_tutorial.txt -> my_misc_tutorials/USB_Blaster_tutorial.txt
+#	renamed:    notes_to_self/asusg14_key_patches.txt -> my_misc_tutorials/asusg14_key_patches.txt
+#	renamed:    notes_to_self/connect_to_eduroam.txt -> my_misc_tutorials/connect_to_eduroam.txt
+#	renamed:    notes_to_self/connect_to_guest_network.txt -> my_misc_tutorials/connect_to_guest_network.txt
+#
