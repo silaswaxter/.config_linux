@@ -15,6 +15,6 @@ xrandr 	--output eDP1 --mode 1920x1080 --pos 2560x900 --rotate normal --scale ${
 
 # Set the Wallpaper
 convert ${PACWALL_IMG} -scale ${SCALE_PERCENT}% ${PACWALL_SCALED_IMG} && \
-feh 	--image-bg=#2e3440 \
+feh 	--image-bg=#282828 \
 	--bg-center $PACWALL_IMG \
        	--bg-center $PACWALL_SCALED_IMG &
