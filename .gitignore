@@ -12,3 +12,5 @@
 .config/dconf*
 .config/htop*
 .config/Troll*
+.config/SEGGER*
+.config/spotify*

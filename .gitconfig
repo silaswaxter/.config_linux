@@ -7,3 +7,5 @@
     email = silaswaxter@gmail.com
 [includeIf "gitdir:~/Workspace/school/"]
     path = ~/.gitconfig-school
+[alias]
+	adog = log --all --decorate --oneline --graph

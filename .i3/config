@@ -1,15 +1,6 @@
 ####################################################################################
-#   File:   .i3/config
-#   Desc:   i3wm personal config
-#   Author: Silas Waxter
-#   Sections:
-#       -README
-#       -i3 Meta
-#       -i3 System Controls
-#       -i3 Properties for Applications
-#       -Custom Keybindings
-#       -Window/Workspace Controls
-#       -Styling Settings
+#   Description:    My personal config file for the i3 window manager
+#   Author:         Silas Waxter
 ####################################################################################
 
 ####################################################################################
@@ -22,16 +13,16 @@
 #
 # It seems as though variables do not act as "simple" or "recursive" variables from
 # make, rather each variable "set" statement is evaluated independently.
-# 	EXAMPLE:
-# 		INPUT
-# 		------
-# 		set $asdf /home/silaswaxter
-# 		set $testfile $asdf/test.txt
+#   EXAMPLE:
+#       INPUT
+#       ------
+#       set $asdf /home/silaswaxter
+#       set $testfile $asdf/test.txt
 #
-# 		OUTPUT
-# 		-----
-# 		$asdf = "/home/silaswaxter"
-# 		$testfile = "test.txt"
+#       OUTPUT
+#       -----
+#       $asdf = "/home/silaswaxter"
+#       $testfile = "test.txt"
 
 ####################################################################################
 # i3 Meta
@@ -96,36 +87,29 @@ for_window [title="^zoom$" class="[zoom]*"] floating enable
 ####################################################################################
 # Window/Workspace Controls
 ####################################################################################
-# fullscreen
+# window toggles
 bindsym $mod+Shift+f fullscreen toggle
-
-# floating
 bindsym $mod+space floating toggle
 
-# toggle tilling orientation
+# window mode
 bindsym $mod+Tab split toggle; exec notify-send -t 1000 'toggled tiling'
-
-# change container layout (stacked, tabbed, toggle split)
 bindsym $mod+i layout tabbed
-bindsym $mod+p layout toggle split
+bindsym $mod+o layout toggle split
 
-# change focus
+
+# change focused container
+bindsym $mod+p focus parent
+bindsym $mod+c focus child
 bindsym $mod+h focus left
-bindsym $mod+j focus down 
+bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# move focused
+# move focused container
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# move workspace to another display
-bindsym $mod+Shift+Ctrl+h move workspace to output left
-bindsym $mod+Shift+Ctrl+j move workspace to output down
-bindsym $mod+Shift+Ctrl+k move workspace to output up
-bindsym $mod+Shift+Ctrl+l move workspace to output right
 
 # Workspace names
 set $ws1 1
@@ -151,7 +135,13 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws0
 
-# Move focused container to workspace
+# move workspace to another display
+bindsym $mod+Shift+Ctrl+h move workspace to output left
+bindsym $mod+Shift+Ctrl+j move workspace to output down
+bindsym $mod+Shift+Ctrl+k move workspace to output up
+bindsym $mod+Shift+Ctrl+l move workspace to output right
+
+# move focused container to workspace __
 bindsym $mod+Ctrl+1 move container to workspace $ws1
 bindsym $mod+Ctrl+2 move container to workspace $ws2
 bindsym $mod+Ctrl+3 move container to workspace $ws3
@@ -163,7 +153,7 @@ bindsym $mod+Ctrl+8 move container to workspace $ws8
 bindsym $mod+Ctrl+9 move container to workspace $ws9
 bindsym $mod+Ctrl+0 move container to workspace $ws0
 
-# Move to workspace with focused container
+# move focused container to workspace __;  switch to focused container
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
@@ -175,7 +165,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws0; workspace $ws0
 
-# Resize Windows
+# resize Windows
 bindsym $mod+r mode "resize"
 mode "resize" {
         bindsym h resize shrink width 5 px or 5 ppt
@@ -189,7 +179,7 @@ mode "resize" {
 }
 
 ####################################################################################
-# Styling Settings (note: colors & fonts at bot.)
+# Styling Settings
 ####################################################################################
 # Borders
     default_border pixel 3
@@ -197,60 +187,52 @@ mode "resize" {
     # draw borders on conatainer only when NOT only container on workspace
     smart_borders on
 
-# Font for window titles. 
+# Font for window titles.
 # (Will also used by bar unless a different font is used in the bar {} block.)
 font xft:LiberationSans 12
 
-set $nord0 #2E3440
-set $nord1 #3B4252
-set $nord2 #434C5E
-set $nord3 #4C566A
-set $nord4 #D8DEE9
-set $nord5 #E5E9F0
-set $nord6 #ECEFF4
-set $nord7 #8FBCBB
-set $nord8 #88C0D0
-set $nord9 #81A1C1
-set $nord10 #5E81AC
-set $nord11 #BF616A
-set $nord12 #D08770
-set $nord13 #EBCB8B
-set $nord14 #A3BE8C
-set $nord15 #B48EAD
+# set primary gruvbox colorscheme colors
+set $bg         #282828
+set $red        #cc241d
+set $green      #98971a
+set $yellow     #d79921
+set $blue       #458588
+set $purple     #b16286
+set $aqua       #689d68
+set $grey       #a89984
+set $darkgrey   #1d2021
 
 # Start i3bar to display a workspace bar 
 # (plus the system information i3status if available)
 bar {
-	i3bar_command i3bar --transparency
-	status_command i3status
-	position top
+    i3bar_command i3bar --transparency
+    status_command i3status
+    position top
 
-	bindsym button4 nop
-	bindsym button5 nop
-	strip_workspace_numbers yes
+    bindsym button4 nop
+    bindsym button5 nop
+    strip_workspace_numbers yes
 
     colors {
-        background $nord2
-        statusline $nord5
-        separator  $nord2
+        background  $bg
+        separator   $bg
+        statusline  $grey
 
-        #                  border  backgr. text
-        focused_workspace  $nord10 $nord10 $nord1
-        active_workspace   $nord9  $nord9  $nord1
-        inactive_workspace $nord2  $nord2  $nord5
-        binding_mode       $nord11 $nord11 $nord5
-	#colors for mode choices windows
-        urgent_workspace   $nord11 $nord11 $nord5
+        #                  border       bg          text
+        focused_workspace  $grey        $grey       $bg
+        active_workspace   $bg          $bg         $grey
+        inactive_workspace $bg          $bg         $grey
+        binding_mode       $red         $red        $grey
+        #colors for mode choices windows
+        urgent_workspace   $red         $red        $grey
 
     }
 }
 
 # Theme colors
-# class                   border  backgr. text    indic.  child_border
-  client.focused          $nord9  $nord9  $nord1  
-  client.focused_inactive $nord0  $nord0  $nord5  
-  client.unfocused        $nord0  $nord0  $nord5  
-  client.urgent           $nord11 $nord11 $nord5
-  client.placeholder      $nord0  $nord0  $nord5 
-
-  client.background       #ffffff
+# class                     border      bg          text        indic.      child_border
+client.focused              $bg         $grey       $bg
+client.focused_inactive     $bg         $bg         $grey
+client.unfocused            $bg         $bg         $grey
+client.urgent               $red        $red        $grey
+client.background           #ffffff

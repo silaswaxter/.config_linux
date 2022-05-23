@@ -5,10 +5,13 @@ automake
 base
 bison
 blueman
+docker
+docker-compose
 efibootmgr
 fakeroot
 feh
 flex
+fzf
 gcc
 git
 groff
@@ -26,6 +29,7 @@ linux-firmware
 m4
 make
 man-db
+neovim
 networkmanager
 numlockx
 openssh
@@ -44,8 +48,8 @@ sudo
 texinfo
 ttf-liberation
 unzip
+usbutils
 vi
-vim
 which
 xf86-video-intel
 xorg-server
