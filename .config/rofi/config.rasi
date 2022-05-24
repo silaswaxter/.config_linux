@@ -1,4 +1,4 @@
 configuratoin {
 
 }
-@theme "nordic_dmenu_dt"
+@theme "gruvbox_dmenu_dt"

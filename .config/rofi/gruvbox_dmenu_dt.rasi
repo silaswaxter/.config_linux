@@ -18,16 +18,16 @@ configuration {
     /* Base */
     height:                     24px;
 
-    background-color:           #2e3440;
-    text-color:                 #d8dee9;
-    default-border:             #2e3440;
+    background-color:           #282828;
+    text-color:                 #a89984;
+    default-border:             #282828;
 
-    prompt-background:          #5E81AC;
-    prompt-foreground:          #2e3440;
+    prompt-background:          #a89984;
+    prompt-foreground:          #282828;
     prompt-padding:             2px;
 
-    selected-background:        #A3BE8C;
-    selected-foreground:        #2e3440;
+    selected-background:        #d79921;
+    selected-foreground:        #282828;
 }
 #window {
     anchor: north;
