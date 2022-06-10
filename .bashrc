@@ -16,7 +16,6 @@ LS_COLORS=$LS_COLORS:'di=1;33:' ; export LS_COLORS
 alias terminal='alacritty &'
 alias ls='ls --color=auto'
 alias ll='ls -la'
-alias vim='nvim'
 
 #PATH modifications
 PATH=${PATH}:/opt/intelFPGA/18.1/quartus/bin:/opt/intelFPGA/20.1/modelsim_ase/bin

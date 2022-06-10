@@ -92,10 +92,8 @@ bindsym $mod+Shift+f fullscreen toggle
 bindsym $mod+space floating toggle
 
 # window mode
-bindsym $mod+Tab split toggle; exec notify-send -t 1000 'toggled tiling'
-bindsym $mod+i layout tabbed
-bindsym $mod+o layout toggle split
-
+# currently not using tabbed & stacking layouts because container use is too much complexity
+bindsym $mod+Tab split toggle
 
 # change focused container
 bindsym $mod+p focus parent
@@ -231,8 +229,8 @@ bar {
 
 # Theme colors
 # class                     border      bg          text        indic.      child_border
-client.focused              $bg         $grey       $bg
-client.focused_inactive     $bg         $bg         $grey
-client.unfocused            $bg         $bg         $grey
-client.urgent               $red        $red        $grey
+client.focused              $bg         $grey       $bg         $yellow     $grey
+client.focused_inactive     $bg         $bg         $grey       $bg         $bg
+client.unfocused            $bg         $bg         $grey       $bg         $bg
+client.urgent               $bg         $red        $grey       $red        $red
 client.background           #ffffff

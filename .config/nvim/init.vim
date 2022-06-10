@@ -10,11 +10,11 @@ endif
 
 "vim-plug plugins list
 call plug#begin(expand('~/.vim/plugged'))
-Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 Plug 'airblade/vim-gitgutter'
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 
@@ -34,23 +34,27 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set colorcolumn=100
-set listchars=trail:␣
-set list
+"set listchars=trail:␣
+"set list
 " highlights trailing whitespace
 " (https://vim.fandom.com/wiki/Highlight_unwanted_spaces)
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=magenta guibg=magenta
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+"autocmd ColorScheme * highlight ExtraWhitespace ctermbg=magenta guibg=magenta
+"match ExtraWhitespace /\s\+$/
+"autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+"autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+"autocmd BufWinLeave * call clearmatches()
 
-" need to fix to make less annoying
-set spell spelllang=en_us
+" TODO: make spelling actuallly good and not annoying
+"set spell spelllang=en_us
 
 set clipboard=unnamedplus
-
 set number relativenumber
+
+"""
+" Language Server Protocol (LSP) Stuff
+"""
+lua require'lspconfig'.bashls.setup{}
 
 
 """
