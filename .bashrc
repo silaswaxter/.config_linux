@@ -17,5 +17,8 @@ alias terminal='alacritty &'
 alias ls='ls --color=auto'
 alias ll='ls -la'
 
+# Env Variables
+SCREEN_BRIGHTNESS_SCRIPTS_DIR="/etc/system_config_files_linux/screen_brightness"
+
 #PATH modifications
-PATH=${PATH}:/opt/intelFPGA/18.1/quartus/bin:/opt/intelFPGA/20.1/modelsim_ase/bin
+PATH=${PATH}:~/.local/bin

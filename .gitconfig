@@ -1,11 +1,12 @@
 [core]
-	editor = nvim
+    editor = nvim
+    hooksPath = .githooks
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [user]
-	name = Silas Waxter
+    name = Silas Waxter
     email = silaswaxter@gmail.com
 [includeIf "gitdir:~/Workspace/school/"]
     path = ~/.gitconfig-school
 [alias]
-	adog = log --all --decorate --oneline --graph
+    adog = log --all --decorate --oneline --graph

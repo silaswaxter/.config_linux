@@ -48,13 +48,13 @@ set colorcolumn=100
 " TODO: make spelling actuallly good and not annoying
 "set spell spelllang=en_us
 
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 set number relativenumber
 
 """
-" Language Server Protocol (LSP) Stuff
+" Language Server Protocol (LSP)
 """
-lua require'lspconfig'.bashls.setup{}
+" lua require'lspconfig'.bashls.setup{}
 
 
 """

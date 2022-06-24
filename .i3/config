@@ -11,8 +11,8 @@
 #                                                       ------------------------
 #       will throw an error; i3wm recognizes the "fullscreen" from the comment.
 #
-# It seems as though variables do not act as "simple" or "recursive" variables from
-# make, rather each variable "set" statement is evaluated independently.
+# It seems as though variables do not act straightforware;  their behavior is NOT
+# similiar to either "simple" or "recursive" variables from make.
 #   EXAMPLE:
 #       INPUT
 #       ------
@@ -25,13 +25,24 @@
 #       $testfile = "test.txt"
 
 ####################################################################################
+# i3 Autostart 
+# why:  most display managers run the WM without running any x files (like xinitrc)
+#       first.
+####################################################################################
+exec --no-startup-id picom  --experimental-backend --backend glx \
+                            --xrender-sync-fence -i 1.0 -b
+exec --no-startup-id xset r rate 150 35
+exec --no-startup-id /home/$(whoami)/.screenlayout/auto_display.sh
+exec --no-startup-id xbindkeys -f /etc/system_config_files_linux/asus_rog_g14/xbindkeysrc
+
+####################################################################################
 # i3 Meta
 ####################################################################################
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
 # reload/restart i3
-bindsym $mod+Shift+r restart; exec notify-send -t 1000 "Restarted i3wm"
+bindsym $mod+Shift+r restart
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -53,13 +64,6 @@ mode "$system_operation" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-
-####################################################################################
-# i3 Autostart
-####################################################################################
-exec --no-startup-id picom --backend glx --experimental-backend --xrender-sync-fence -b
-exec --no-startup-id xset r rate 150 35
-exec --no-startup-id xbindkeys
 
 ####################################################################################
 # i3 Keybindings

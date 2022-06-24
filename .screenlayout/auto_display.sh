@@ -3,27 +3,39 @@
 # connected and runs the appropriate display script
 DISPLAY_SCRIPT_DIR="/home/silas/.screenlayout"
 
-#Store xrandr connected output as an array
-CONNECTED_DISPLAYS=$(xrandr | grep " connected ")
-CONNECTED_DISPLAYS_ARR=(${CONNECTED_DISPLAYS})
+# ammount to scale mobile monitor
+MOBILE_SCALE="0.8"
 
-#Parse through xrandr output and set the display flag accordingly
+# store xrandr connected output as an array
+XRANDR_CONNECTED=$(xrandr | grep " connected ")
+XRANDR_CONNECTED=(${XRANDR_CONNECTED})
+
+# parse through xrandr output and set the display flag accordingly
 DISPLAY_FLAG="mobile"
-for i in ${CONNECTED_DISPLAYS_ARR[@]}
+for i in ${XRANDR_CONNECTED[@]}
 do
-	if [ $i = "HDMI2" ]
-	then
-		DISPLAY_FLAG="desk"
-	fi
+    if [[ $i == *"HDMI"* ]]; then
+        DISPLAY_FLAG="desk"
+    fi
 done
 
-#Check the display flag and execute appropriate script
-echo "${DISPLAY_FLAG}"
-if [ ${DISPLAY_FLAG} = "desk" ]
-then
-	echo "executing desktop screen layout script"
-	exec ${DISPLAY_SCRIPT_DIR}/desk.sh
-else
-	echo "executing mobile screen layout script"
-	exec ${DISPLAY_SCRIPT_DIR}/mobile.sh
-fi
+# check the display flag and execute appropriate script
+case ${DISPLAY_FLAG} in
+    "mobile")
+        echo "screen layout script executed:    mobile"
+        echo "scaling mobile by:                1x1"
+        xrandr --output eDP-1 --scale 1x1
+        ;;
+    "desk")
+        echo "screen layout script executed:    desk"
+        ${DISPLAY_SCRIPT_DIR}/desk.sh
+        echo "scaling mobile by:                ${MOBILE_SCALE}x${MOBILE_SCALE}"
+        xrandr --output eDP-1 --scale ${MOBILE_SCALE}x${MOBILE_SCALE}
+        ;;
+    *)
+        echo "screen layout script executed:    NONE"
+        ;;
+esac
+
+# refresh background
+exec pacwall

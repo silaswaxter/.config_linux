@@ -49,10 +49,29 @@ while test $# -gt 0; do
     esac
 done
 
+# parse ignore file
+ENTRIES_TO_IGNORE=''
+while read -r line; do
+    if [ "${line:0:1}" != "#" ]; then
+        ENTRIES_TO_IGNORE="${ENTRIES_TO_IGNORE} ${line}"
+    fi
+done < ${IGNORE_FILENAME}
+
+GREP_PATTERN_FLAGS_ENTRIES_TO_IGNORE=''
+for entry in ${ENTRIES_TO_IGNORE}; do
+    GREP_PATTERN_FLAGS_ENTRIES_TO_IGNORE="${GREP_PATTERN_FLAGS_ENTRIES_TO_IGNORE} -e ${entry}"
+done
+
+FOREIGN_PACKAGES=$(pacman -Qqm)
+for package in ${FOREIGN_PACKAGES}; do
+    GREP_PATTERN_FLAGS_FOREIGN_PACKAGES="${GREP_PATTERN_FLAGS_FOREIGN_PACKAGES} -e ${package}"
+done
+
 if ${OUTPUT_PACMAN} = "true"; then
-    pacman -Qqe | grep -v "$(pacman -Qqm) $(cat ${IGNORE_FILENAME})" > ${OUTPUT_FILENAME}
+    pacman -Qqe | grep -v ${GREP_PATTERN_FLAGS_FOREIGN_PACKAGES} \
+                          ${GREP_PATTERN_FLAGS_ENTRIES_TO_IGNORE} > ${OUTPUT_FILENAME}
 else
-    pacman -Qqm | grep -v "$(cat ${IGNORE_FILENAME})" > ${OUTPUT_FILENAME}
+    pacman -Qqm | grep -v ${GREP_PATTERN_FLAGS_ENTRIES_TO_IGNORE} > ${OUTPUT_FILENAME}
 fi
 
 exit 0

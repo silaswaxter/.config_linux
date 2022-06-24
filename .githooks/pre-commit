@@ -1,0 +1,39 @@
+#!/bin/bash
+##########
+# DESC:		Git will run this script prior to committing;  this script updates the package lists.
+# AUTHOR:   Silas Waxter
+# DATE:		05/05/2022
+##########
+
+#####
+# Definitions
+#####
+# absolute path of this script
+script_name="$(readlink -f "$0")"
+# absolute path of this script's directory
+script_dir="$(dirname "${script_name}")"
+# absolute path of configs folder (ie this repo)
+configs_dir="${script_dir}/.."
+
+echo -e "--------------------"
+
+
+#####
+# Update native and foreign (eg yay) package lists
+#####
+echo -e "Updating package lists..."
+${configs_dir}/installed_packages/fetch_installed_packages_list.sh
+echo -e "-"
+${configs_dir}/installed_packages/fetch_installed_packages_list.sh -f
+echo -e "Done.\n"
+
+#####
+# Update symlink_ignore file
+#####
+echo -e "Updating symlink_ignore with all non-hidden files..."
+ls ${configs_dir} > ${configs_dir}/symlink_ignore
+echo -e "Done."
+
+
+echo -e "--------------------"
+
