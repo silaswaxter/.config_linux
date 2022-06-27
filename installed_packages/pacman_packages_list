@@ -46,8 +46,6 @@ usbutils
 xbindkeys
 xclip
 xdg-utils
-xdotool
 xorg-server
-xorg-xbacklight
 xorg-xinit
 zathura
