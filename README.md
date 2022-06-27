@@ -18,15 +18,15 @@ yay).  The pre-commit git hook is managed by a git-hook framework called
 [pre-commit](https://pre-commit.com/).  
 
 ## Configuration Decsions (notes to self)
-###Display Scripts (.screenlayout)
+### Display Scripts (.screenlayout)
 `auto_display.sh` is a parent script that will call specific subscripts and will handle any 
 scaling etc.  The subscripts such as mobile.sh should only contain a basic xrandr command and can
 be configured with arandr (xrandr GUI);  migrating the scripts for a new system is faster when a
 gui is used.
-###Pacwall
+### Pacwall
 Currently handles the setting of the wallpaper.  Entities wanting to update the wallpaper should
 call pacwall.
-###i3
+### i3
 Autostarts some applications because many diplay managers (like lightdm) do not run any x files 
 (like .xinitrc).
 
