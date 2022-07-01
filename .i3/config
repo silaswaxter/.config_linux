@@ -73,7 +73,7 @@ bindsym $mod+u exec ~/.screenlayout/auto_display.sh
 
 # Applications
 bindsym $mod+Return exec --no-startup-id rofi -show run
-bindsym $mod+a exec --no-startup-id alacritty
+bindsym $mod+a exec --no-startup-id alacritty -e tmux
 bindsym $mod+s exec --no-startup-id brave
 bindsym $mod+Shift+s exec --no-startup-id spotify
 bindsym $mod+d exec --no-startup-id zathura
