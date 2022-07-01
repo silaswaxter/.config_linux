@@ -15,8 +15,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'neovim/nvim-lspconfig'
-call plug#end()
 
+" suda.nvim
+Plug 'lambdalisue/suda.vim'
+call plug#end()
 
 "-----------------------------
 "           Settings
