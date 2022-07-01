@@ -15,24 +15,28 @@
 script_name="$(readlink -f "$0")"
 script_dir="$(dirname "${script_name}")"
 
-native_packages_list_file="${script_dir}/pacman_packages_list"
-foreign_packages_list_file="${script_dir}/foreign_packages_list"
-ignore_packages_list_file="${script_dir}/ignore_packages_list"
+native_packages_list_filename="pacman_packages_list"
+foreign_packages_list_filename="foreign_packages_list"
+ignore_packages_list_filename="ignore_packages_list"
+native_packages_list_abs_path="${script_dir}/${native_packages_list_filename}"
+foreign_packages_list_abs_path="${script_dir}/${foreign_packages_list_filename}"
+ignore_packages_list_abs_path="${script_dir}/${ignore_packages_list_filename}"
+staging_area_dir="/var/tmp"
 
 #####
 # ensure packages lists exist (commit will only fail if pre-commit updates file in staging area)
 #####
 exit_after_list_checks="false"
-if [[ ! -f "${native_packages_list_file}" ]]; then
-    echo "Failed:    ${native_packages_list_file} does not exist."
+if [[ ! -f "${native_packages_list_abs_path}" ]]; then
+    echo "Failed:    ${native_packages_list_abs_path} does not exist."
 
-    touch "${native_packages_list_file}"
+    touch "${native_packages_list_abs_path}"
     exit_after_list_checks="true"
 fi
-if [[ ! -f "${foreign_packages_list_file}" ]]; then
-    echo "Failed:    ${foreign_packages_list_file} does not exist."
+if [[ ! -f "${foreign_packages_list_abs_path}" ]]; then
+    echo "Failed:    ${foreign_packages_list_abs_path} does not exist."
 
-    touch "${foreign_packages_list_file}"
+    touch "${foreign_packages_list_abs_path}"
     exit_after_list_checks="true"
 fi
 if [[ "true" == "${exit_after_list_checks}" ]]; then
@@ -44,10 +48,24 @@ if [[ "true" == "${exit_after_list_checks}" ]]; then
 fi
 
 #####
-# Update native and foreign (eg yay) package lists
+# Update native and foreign (eg yay) package lists if new packages`
 #####
-${script_dir}/fetch_installed_packages_list.sh -i "${ignore_packages_list_file}" \
-                                                -o "${native_packages_list_file}"
+# stage updated contents in temp file before touching files in git repo.
+${script_dir}/fetch_installed_packages_list.sh -i "${ignore_packages_list_abs_path}" \
+                                                -o "${staging_area_dir}/${native_packages_list_filename}"
 
-${script_dir}/fetch_installed_packages_list.sh -i "${ignore_packages_list_file}" \
-                                                -f -o "${foreign_packages_list_file}"
+${script_dir}/fetch_installed_packages_list.sh -i "${ignore_packages_list_abs_path}" \
+                                                -f -o "${staging_area_dir}/${foreign_packages_list_filename}"
+
+# if files differ, write staged file to actual file.
+if [[ $(cmp "${staging_area_dir}/${native_packages_list_filename}" "${native_packages_list_abs_path}") ]]; then
+    echo "Adding packages to ${native_packages_list_abs_path}:"
+    echo "$(comm -3 ${staging_area_dir}/${native_packages_list_filename} ${native_packages_list_abs_path})"
+    cp "${staging_area_dir}/${native_packages_list_filename}" "${native_packages_list_abs_path}"
+fi
+
+if [[ $(cmp "${staging_area_dir}/${foreign_packages_list_filename}" "${foreign_packages_list_abs_path}") ]]; then
+    echo "Adding packages to ${foreign_packages_list_abs_path}:"
+    echo "$(comm -3 ${staging_area_dir}/${foreign_packages_list_filename} ${foreign_packages_list_abs_path})"
+   # cp "${staging_area_dir}/${foreign_packages_list_filename}" "${foreign_packages_list_abs_path}"
+fi
