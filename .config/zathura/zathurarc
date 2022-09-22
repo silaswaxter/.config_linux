@@ -9,6 +9,8 @@ map J zoom out
 map p print
 map i recolor
 
+set selection-clipboard clipboard
+
 #####
 # Nordic Theme
 #####
