@@ -16,3 +16,5 @@
 .config/spotify*
 .config/xournalpp*
 .config/gh*
+styles/
+.config/vale_styles/
