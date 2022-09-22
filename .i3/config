@@ -25,6 +25,20 @@
 #       $testfile = "test.txt"
 
 ####################################################################################
+# forward-declare workspace names
+####################################################################################
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws0 0:0SU
+
+####################################################################################
 # i3 Autostart 
 # why:  most display managers run the WM without running any x files (like xinitrc)
 #       first.
@@ -33,6 +47,7 @@ exec --no-startup-id picom  --experimental-backend --backend glx --blur-method "
 exec --no-startup-id xset r rate 150 35
 exec --no-startup-id /home/$(whoami)/.screenlayout/auto_display.sh
 exec --no-startup-id xbindkeys -f /etc/system_config_files_linux/asus_rog_g14/xbindkeysrc
+exec --no-startup-id redshift -l 44.67:-117.17
 
 ####################################################################################
 # i3 Meta
@@ -41,7 +56,7 @@ exec --no-startup-id xbindkeys -f /etc/system_config_files_linux/asus_rog_g14/xb
 set $mod Mod4
 
 # reload/restart i3
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r restart; exec i3-msg reload
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -73,10 +88,21 @@ bindsym $mod+u exec ~/.screenlayout/auto_display.sh
 
 # Applications
 bindsym $mod+Return exec --no-startup-id rofi -show run
-bindsym $mod+a exec --no-startup-id alacritty -e tmux
-bindsym $mod+s exec --no-startup-id brave
+bindsym $mod+a workspace $ws1; exec --no-startup-id alacritty -e tmux
+bindsym $mod+s workspace $ws2; exec --no-startup-id brave
 bindsym $mod+Shift+s exec --no-startup-id spotify
-bindsym $mod+d exec --no-startup-id zathura
+bindsym $mod+d workspace $ws3; exec --no-startup-id alacritty -e ranger "/home/silas/workspace"
+
+
+####################################################################################
+# Application i3 settings
+####################################################################################
+# Not assigning applications to workspace with class because I want assignment to depend 
+# on flags passed;  to start on specific workspace switch to it before starting.
+for_window [class="Alacritty"] layout tabbed
+for_window [class="Brave-browser"] layout tabbed
+for_window [class="Zathura"] layout tabbed
+
 
 ####################################################################################
 # i3 Acting on Window Properities
@@ -98,6 +124,7 @@ bindsym $mod+space floating toggle
 # window mode
 # currently not using tabbed & stacking layouts because container use is too much complexity
 bindsym $mod+Tab split toggle
+bindsym $mod+Shift+Tab layout tabbed
 
 # change focused container
 bindsym $mod+p focus parent
@@ -112,18 +139,6 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# Workspace names
-set $ws1 1
-set $ws2 2
-set $ws3 3
-set $ws4 4
-set $ws5 5
-set $ws6 6
-set $ws7 7
-set $ws8 8
-set $ws9 9
-set $ws0 0:0SU
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
