@@ -206,7 +206,7 @@ mode "resize" {
 
 # Font for window titles.
 # (Will also used by bar unless a different font is used in the bar {} block.)
-font xft:LiberationSans 12
+font xft:FiraCode Nerd Font Medium 12
 
 # set primary gruvbox colorscheme colors
 set $bg         #282828
