@@ -12,6 +12,11 @@ vim.opt.shiftwidth = 2
 vim.opt.encoding = "utf-8"
 vim.opt.colorcolumn = "80"
 vim.opt.textwidth = 80
-vim.opt.formatoptions = "twa"
+--[[
+Currently disabled because its getting in the way of editing my i3 config. It 
+keeps forcing the wrapping of a line which cannot be wrapped.  TODO: make this 
+feature work good.
+--]]
+--vim.opt.formatoptions = "twa"
 
 

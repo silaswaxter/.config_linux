@@ -18,3 +18,4 @@
 .config/gh*
 styles/
 .config/vale_styles/
+.config/nvim/plugin/*
