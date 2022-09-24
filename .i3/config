@@ -88,10 +88,10 @@ bindsym $mod+u exec ~/.screenlayout/auto_display.sh
 
 # Applications
 bindsym $mod+Return exec --no-startup-id rofi -show run
-bindsym $mod+a workspace $ws1; exec --no-startup-id alacritty -e tmux
+bindsym $mod+a workspace $ws1; exec --no-startup-id kitty -e tmux
 bindsym $mod+s workspace $ws2; exec --no-startup-id brave
 bindsym $mod+Shift+s exec --no-startup-id spotify
-bindsym $mod+d workspace $ws3; exec --no-startup-id alacritty -e ranger "/home/silas/workspace"
+bindsym $mod+d workspace $ws3; exec --no-startup-id kitty -e ranger "/home/silas/workspace"
 
 
 ####################################################################################

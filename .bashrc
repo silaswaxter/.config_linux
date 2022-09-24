@@ -9,7 +9,6 @@ PS1='\[\e[1;33m\][\W]$ \[\e[m\]'
 LS_COLORS=$LS_COLORS:'di=1;33:'; export LS_COLORS
 
 # Aliases
-alias terminal='alacritty &'
 alias ls='ls --color=auto'
 alias ll='ls -la'
 
