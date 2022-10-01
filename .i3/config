@@ -1,32 +1,24 @@
-####################################################################################
-#   Description:    My personal config file for the i3 window manager
-#   Author:         Silas Waxter
-####################################################################################
-
-####################################################################################
-# README
-####################################################################################
-# Be aware of the way you comment.  comments at the ends of lines are stil parsed.
-#       For example, "bindsym $mod+f toggle fullscreen  # sets window fullscreen"
-#                                                       ------------------------
-#       will throw an error; i3wm recognizes the "fullscreen" from the comment.
+################################################################################
+# ABOUT:  My config for the i3 window manager.
+# NOTE:   Comments must be full-lines. Comments following configuration content
+#         is parsed normally. For example:
+#           `bindsym $mod+f toggle fullscreen  # sets window fullscreen`
+#         will interpret the intended comment as part of the bindsym directive.
 #
-# It seems as though variables do not act straightforware;  their behavior is NOT
-# similiar to either "simple" or "recursive" variables from make.
-#   EXAMPLE:
-#       INPUT
-#       ------
-#       set $asdf /home/silaswaxter
-#       set $testfile $asdf/test.txt
+#         Variables do **NOT** behave the same as either of make's "simple" or 
+#         "recursive" variables. The following example exposes some behavior:
 #
-#       OUTPUT
-#       -----
-#       $asdf = "/home/silaswaxter"
-#       $testfile = "test.txt"
-
-####################################################################################
+#           INPUT:
+#             set $asdf /home/silaswaxter
+#             set $testfile $asdf/test.txt
+#
+#           OUTPUT:
+#             $asdf = "/home/silaswaxter"
+#             $testfile = "test.txt"
+#
+################################################################################
 # forward-declare workspace names
-####################################################################################
+################################################################################
 set $ws1 1
 set $ws2 2
 set $ws3 3
@@ -38,75 +30,94 @@ set $ws8 8
 set $ws9 9
 set $ws0 0:0SU
 
-####################################################################################
+################################################################################
 # i3 Autostart 
-# why:  most display managers run the WM without running any x files (like xinitrc)
-#       first.
-####################################################################################
-exec --no-startup-id picom  --experimental-backend --backend glx --blur-method "dual_kawase" --blur-strength 3 --xrender-sync-fence -i 1.0 -b
-exec --no-startup-id xset r rate 150 35
+# why:  Most display managers run the window manager without running any x files
+#       first. For example, lightdm will not execute .xinitrc before launching
+#       i3.
+################################################################################
+# Desktop environment
+#####
+exec --no-startup-id picom  --experimental-backend --backend glx \
+  --blur-method "dual_kawase" --blur-strength 3 --xrender-sync-fence -i 1.0 -b
 exec --no-startup-id /home/$(whoami)/.screenlayout/auto_display.sh
-exec --no-startup-id xbindkeys -f /etc/system_config_files_linux/asus_rog_g14/xbindkeysrc
+# Set background to last generated pacwall image to significantly speed up the
+# command preventing a blank background from appearing. To do this, call pacwall
+# with the proper flags so that the process for setting background adheres to
+# single-source-of-truth. After, call pacwall normally to re-generate the
+# correct background.
+exec --no-startup-id pacwall -ug; pacwall
+exec --no-startup-id /home/$(whoami)/.config/polybar/reload-polybar.sh
+exec --no-startup-id xset r rate 150 35
+exec --no-startup-id xbindkeys -f \
+  /etc/system_config_files_linux/asus_rog_g14/xbindkeysrc
+
+# Niceties
+#####
 exec --no-startup-id redshift -l 44.67:-117.17
 
-####################################################################################
+################################################################################
 # i3 Meta
-####################################################################################
+################################################################################
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
-set $mod Mod4
+set $mod Mod4 
 
 # reload/restart i3
 bindsym $mod+Shift+r restart; exec i3-msg reload
 
-# kill focused window
 bindsym $mod+Shift+q kill
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
-#System Operation Menu
-set $system_operation (h)ibernate, (e)xit_session, (r)eboot, (s)uspend, (S)hutdown
+# System operation mode
+set $lock_screen xlock -mode space
+
+set $system_operation (h)ibernate, (e)xit, (r)eboot, (s)uspend, (S)hutdown
 bindsym $mod+Delete mode "$system_operation"
 mode "$system_operation" {
-    # slock needs --release flag in order to grab keyboard and mouse successfully
-    bindsym --release h exec --no-startup-id /opt/slock/bin/slock & systemctl hibernate, mode "default"
-    bindsym e exec --no-startup-id pkill -KILL -u $(whoami), mode "default"
-    bindsym r exec --no-startup-id shutdown -r now, mode "default"
-    bindsym --release s exec --no-startup-id /opt/slock/bin/slock & systemctl suspend, mode "default"
-    bindsym Shift+s exec --no-startup-id shutdown now, mode "default"
-
-    # exit system mode: "Enter" or "Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+  bindsym h exec $lock_screen & systemctl hibernate, mode "default"
+  bindsym e exec pkill -KILL -u $(whoami), mode "default"
+  bindsym r exec shutdown -r now, mode "default"
+  bindsym s exec $lock_screen & systemctl suspend, mode "default"
+  bindsym Shift+s exec shutdown now, mode "default"
+  
+  # exit system mode: "Enter" or "Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
-####################################################################################
+################################################################################
 # i3 Keybindings
-####################################################################################
-# Configure Displays
-bindsym $mod+u exec ~/.screenlayout/auto_display.sh
+################################################################################
+# Configure displays
+bindsym $mod+u exec /home/$(whoami)/.screenlayout/auto_display.sh
 
 # Applications
 bindsym $mod+Return exec --no-startup-id rofi -show run
-bindsym $mod+a workspace $ws1; exec --no-startup-id kitty -e tmux
+bindsym $mod+a workspace $ws1; exec --no-startup-id kitty
 bindsym $mod+s workspace $ws2; exec --no-startup-id brave
-bindsym $mod+Shift+s exec --no-startup-id spotify
-bindsym $mod+d workspace $ws3; exec --no-startup-id kitty -e ranger "/home/silas/workspace"
+bindsym $mod+d workspace $ws3; exec --no-startup-id kitty ranger "~/workspace"
+bindsym $mod+Shift+s workspace $ws9; exec --no-startup-id brave --new-window \
+  open.spotify.com
 
 
-####################################################################################
+################################################################################
 # Application i3 settings
-####################################################################################
-# Not assigning applications to workspace with class because I want assignment to depend 
-# on flags passed;  to start on specific workspace switch to it before starting.
+################################################################################
+# Mapping applications to workspaces:
+# Applications are mapped to workspaces by first switching to the workspace
+# before starting the application. **NOT** using the application class to map 
+# because terminal applications, for example 'ranger', are mapped to different
+# workspaces than the terminal itself.
 for_window [class="Alacritty"] layout tabbed
 for_window [class="Brave-browser"] layout tabbed
 for_window [class="Zathura"] layout tabbed
 
 
-####################################################################################
+################################################################################
 # i3 Acting on Window Properities
-####################################################################################
+################################################################################
 # switch to urgent windows
 for_window [urgent=latest] focus
 
@@ -114,15 +125,16 @@ for_window [urgent=latest] focus
 for_window [class="Oblogout"] fullscreen enable
 for_window [title="^zoom$" class="[zoom]*"] floating enable
 
-####################################################################################
+################################################################################
 # Window/Workspace Controls
-####################################################################################
+################################################################################
 # window toggles
 bindsym $mod+Shift+f fullscreen toggle
 bindsym $mod+space floating toggle
 
 # window mode
-# currently not using tabbed & stacking layouts because container use is too much complexity
+# currently not using tabbed & stacking layouts because container use is too 
+# much complexity
 bindsym $mod+Tab split toggle
 bindsym $mod+Shift+Tab layout tabbed
 
@@ -195,61 +207,30 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-####################################################################################
+################################################################################
 # Styling Settings
-####################################################################################
-# Borders
-    default_border pixel 3
-    default_floating_border normal
-    # draw borders on conatainer only when NOT only container on workspace
-    smart_borders on
+################################################################################
+default_border pixel 1
+default_floating_border normal
+# draw borders on container only when NOT only container on workspace
+smart_borders on
 
-# Font for window titles.
-# (Will also used by bar unless a different font is used in the bar {} block.)
 font xft:FiraCode Nerd Font Medium 12
 
-# set primary gruvbox colorscheme colors
-set $bg         #282828
+# Gruvbox primary, dark color scheme
 set $red        #cc241d
 set $green      #98971a
 set $yellow     #d79921
 set $blue       #458588
 set $purple     #b16286
 set $aqua       #689d68
-set $grey       #a89984
+set $fg-grey    #a89984
+set $bg-grey    #282828
 set $darkgrey   #1d2021
 
-# Start i3bar to display a workspace bar 
-# (plus the system information i3status if available)
-bar {
-    i3bar_command i3bar --transparency
-    status_command i3status
-    position top
-
-    bindsym button4 nop
-    bindsym button5 nop
-    strip_workspace_numbers yes
-
-    colors {
-        background  $bg
-        separator   $bg
-        statusline  $grey
-
-        #                  border       bg          text
-        focused_workspace  $grey        $grey       $bg
-        active_workspace   $bg          $bg         $grey
-        inactive_workspace $bg          $bg         $grey
-        binding_mode       $red         $red        $grey
-        #colors for mode choices windows
-        urgent_workspace   $red         $red        $grey
-
-    }
-}
-
-# Theme colors
-# class                     border      bg          text        indic.      child_border
-client.focused              $bg         $grey       $bg         $yellow     $grey
-client.focused_inactive     $bg         $bg         $grey       $bg         $bg
-client.unfocused            $bg         $bg         $grey       $bg         $bg
-client.urgent               $bg         $red        $grey       $red        $red
-client.background           #ffffff
+# class                 border     bg         text       indic.     child_border
+client.focused          $bg-grey   $fg-grey   $bg-grey   $yellow    $fg-grey
+client.focused_inactive $bg-grey   $bg-grey   $fg-grey   $bg-grey   $bg-grey
+client.unfocused        $bg-grey   $bg-grey   $fg-grey   $bg-grey   $bg-grey
+client.urgent           $bg-grey   $red       $fg-grey   $red       $red
+client.background       #ffffff
