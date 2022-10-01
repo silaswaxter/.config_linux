@@ -1,6 +1,6 @@
-TLDR:       You want to set a default screen layout;  You want the display manager to use  
-            this layout.  Short answer don't.
-See:        https://askubuntu.com/questions/63681/how-can-i-make-xrandr-customization-permanent
+ABOUT:  Are you trying to set a default layout that the display manager uses? 
+        Stop, its not worth your time. See the following link: 
+        https://askubuntu.com/questions/63681/how-can-i-make-xrandr-customization-permanent
 
 # Note to self after trying:
 1) Dont use Xorg multiheading as it leads to complications:
