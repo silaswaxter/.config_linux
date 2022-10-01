@@ -24,6 +24,12 @@ return require('packer').startup(function(use)
   -- Theming
   use { "ellisonleao/gruvbox.nvim" }
 
+  -- Render Images
+  use {
+    'edluffy/hologram.nvim',
+    config = [[require("plugin-config.hologram")]],
+  }
+
   -- LSP
   use {
     "williamboman/mason-lspconfig.nvim",
