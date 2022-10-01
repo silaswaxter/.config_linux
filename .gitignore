@@ -19,3 +19,4 @@
 styles/
 .config/vale_styles/
 .config/nvim/plugin/*
+.config/polybar/system-specific*
