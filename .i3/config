@@ -85,7 +85,7 @@ set $system_operation (h)ibernate, (e)xit, (r)eboot, (s)uspend, (S)hutdown
 bindsym $mod+Delete mode "$system_operation"
 mode "$system_operation" {
   bindsym h $exec_lock_screen & systemctl hibernate, mode "default"
-  bindsym e exec pkill -KILL -u $(whoami), mode "default"
+  bindsym e exec i3-msg exit, mode "default"
   bindsym r exec shutdown -r now, mode "default"
   bindsym s $exec_lock_screen & systemctl suspend, mode "default"
   bindsym Shift+s exec shutdown now, mode "default"
@@ -244,3 +244,5 @@ client.focused_inactive $bg-grey   $bg-grey   $fg-grey   $bg-grey   $bg-grey
 client.unfocused        $bg-grey   $bg-grey   $fg-grey   $bg-grey   $bg-grey
 client.urgent           $bg-grey   $red       $fg-grey   $red       $red
 client.background       #ffffff
+
+
