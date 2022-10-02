@@ -1,6 +1,0 @@
-#####
-# Hidden Files to Ignore
-#####
-.pre-commit-config.yaml
-.git
-.gitignore

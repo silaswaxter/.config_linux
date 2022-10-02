@@ -6,6 +6,7 @@ avrdude
 bison
 blueman
 byzanz
+chezmoi
 clang
 docker
 docker-compose
