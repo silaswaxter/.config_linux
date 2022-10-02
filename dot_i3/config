@@ -43,7 +43,7 @@ set $exec_reload_polybar \
 set $exec_reload_display_layout \
   exec --no-startup-id /home/$(whoami)/.screenlayout/update_display_layout.sh
 
-set $exec_lock_screen xlock -mode space
+set $exec_lock_screen exec xlock -mode space
 
 ################################################################################
 # i3 Autostart 
