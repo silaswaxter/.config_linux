@@ -19,5 +19,5 @@
 styles/
 .config/vale_styles/
 .config/nvim/plugin/*
-.config/polybar/system-specific*
+*/polybar/system-specific*
 .config/Unknown\ Organization/*
