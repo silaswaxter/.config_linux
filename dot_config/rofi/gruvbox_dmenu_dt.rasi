@@ -7,16 +7,16 @@
  */
 
 configuration {
-    font: "LiberationMono 12";
+    font: "FiraCode Nerd Font 12";
     show-icons: false;
-    terminal: "alacritty";
+    terminal: "kitty";
     drun-match-fields: "name,generic,exec,categories";
     matching: "fuzzy";
 }
 
 * {
     /* Base */
-    height:                     24px;
+    height:                     32px;
 
     background-color:           #282828;
     text-color:                 #a89984;
@@ -33,7 +33,7 @@ configuration {
     anchor: north;
     location: north;
     width: 100%;
-    padding: 0px;
+    padding: 4px;
     children: [ horibox ];
 }
 #horibox {
