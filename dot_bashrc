@@ -1,3 +1,8 @@
+#
+# See the bash configuration files for Arch Linux:
+#     https://wiki.archlinux.org/title/Bash#Configuration_files
+#
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -10,17 +15,9 @@ LS_COLORS=$LS_COLORS:'di=1;33:'; export LS_COLORS
 alias ls='ls --color=auto'
 alias ll='ls -la'
 
-# Environment Variables
-SCREEN_BRIGHTNESS_SCRIPTS_DIR="/etc/system_config_files_linux/screen_brightness"
-
-#PATH="${PATH}:/home/silas/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin"
-#PATH="${PATH}:/opt/arduino-ide-2.0.2"
-#PATH="${PATH}:/opt/logic-2.4.1"
-
 # Source bash completion
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 source ~/.chezmoi-completion.bash
-
 
 # GENERATED CONTENT
 #-----

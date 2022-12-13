@@ -1,0 +1,15 @@
+#
+# See the bash configuration files for Arch Linux:
+#     https://wiki.archlinux.org/title/Bash#Configuration_files
+#
+
+# Environment Variables
+SCREEN_BRIGHTNESS_SCRIPTS_DIR="/etc/system_config_files_linux/screen_brightness"
+
+PATH="${PATH}:/home/silas/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin"
+PATH="${PATH}:/opt/arduino-ide-2.0.2"
+PATH="${PATH}:/opt/logic-saleae"
+
+export EDITOR="nvim"
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
