@@ -1,11 +1,12 @@
 [core]
-    editor = nvim
+  editor = nvim
 [init]
-    defaultBranch = main
+  defaultBranch = main
+	templateDir = /home/silas/.git-template
 [user]
-    name = Silas Waxter
-    email = silaswaxter@gmail.com
+  name = Silas Waxter
+  email = silaswaxter@gmail.com
 [includeIf "gitdir:~/Workspace/school/"]
-    path = ~/.gitconfig-school
+  path = ~/.gitconfig-school
 [alias]
-    adog = log --all --decorate --oneline --graph
+  adog = log --all --decorate --oneline --graph
