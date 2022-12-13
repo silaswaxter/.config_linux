@@ -25,8 +25,8 @@ hook.
 == Installation
 . Ensure https://www.chezmoi.io/[`chezmoi`] is installed.
 . Apply the dot files by running
-  +
-  `chezmoi init --ssh silaswaxter/.dotfiles --apply`
++
+`chezmoi init --ssh silaswaxter/.dotfiles --apply`
 . Ensure `pre-commit` is installed:
 .. Install `conda` onto the system using the
    https://docs.conda.io/en/main/miniconda.html[miniconda installer].
