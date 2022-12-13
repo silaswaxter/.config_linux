@@ -21,8 +21,13 @@ is used. The https://pre-commit.com/[pre-commit] framework manages the git
 hook.
 
 == Installation
-. Install `chezmoi`
-. Run `chezmoi init silaswaxter`
+. Install https://www.chezmoi.io/[`chezmoi`]
+.. Run `chezmoi init --apply silaswaxter`
+. Install `pre-commit`
+.. Install `conda` onto the system using the
+   https://docs.conda.io/en/main/miniconda.html[miniconda installer].
+.. Create the conda environment by running
+   `conda-env create -f ./conda-environment.yml`
 
 == Configuration decisions
 The following contain information pertaining to the decisions and non-intuititve
