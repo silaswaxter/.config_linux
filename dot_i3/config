@@ -58,7 +58,7 @@ exec --no-startup-id picom  --experimental-backend --backend glx \
 $exec_reload_display_layout
 $exec_reload_polybar
 $exec_reload_pacwall
-exec --no-startup-id xset r rate 150 35
+exec --no-startup-id xset r rate 130 100
 exec --no-startup-id xbindkeys -f \
   /etc/system_config_files_linux/asus_rog_g14/xbindkeysrc
 
@@ -107,7 +107,7 @@ bindsym $mod+u \
 bindsym $mod+Return exec --no-startup-id rofi -show run
 bindsym $mod+a workspace $ws1; exec --no-startup-id kitty
 bindsym $mod+s workspace $ws2; exec --no-startup-id brave
-bindsym $mod+d workspace $ws3; exec --no-startup-id kitty ranger "~/workspace"
+bindsym $mod+d workspace $ws3; exec --no-startup-id kitty ranger
 bindsym $mod+Shift+s workspace $ws9; exec --no-startup-id brave --new-window \
   open.spotify.com
 
@@ -120,7 +120,7 @@ bindsym $mod+Shift+s workspace $ws9; exec --no-startup-id brave --new-window \
 # before starting the application. **NOT** using the application class to map 
 # because terminal applications, for example 'ranger', are mapped to different
 # workspaces than the terminal itself.
-for_window [class="Alacritty"] layout tabbed
+for_window [class="kitty"] layout tabbed
 for_window [class="Brave-browser"] layout tabbed
 for_window [class="Zathura"] layout tabbed
 
@@ -243,6 +243,6 @@ client.focused          $bg-grey   $fg-grey   $bg-grey   $yellow    $fg-grey
 client.focused_inactive $bg-grey   $bg-grey   $fg-grey   $bg-grey   $bg-grey
 client.unfocused        $bg-grey   $bg-grey   $fg-grey   $bg-grey   $bg-grey
 client.urgent           $bg-grey   $red       $fg-grey   $red       $red
-client.background       #ffffff
+#client.background       #ffffff
 
 
