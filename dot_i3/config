@@ -42,6 +42,12 @@ set $exec_reload_polybar \
   exec --no-startup-id /home/$(whoami)/.config/polybar/reload-polybar.sh
 set $exec_reload_display_layout \
   exec --no-startup-id /home/$(whoami)/.screenlayout/update_display_layout.sh
+set $exec_reload_keyboard_settings \
+  exec --no-startup-id xset r rate 130 100;
+  exec --no-startup-id xbindkeys -f \
+    /etc/system_config_files_linux/asus_rog_g14/xbindkeysrc
+set $exec_redshift \
+  exec --no-startup-id redshift -l 44.67:-117.17
 
 set $exec_lock_screen exec xlock -mode space
 
@@ -58,13 +64,8 @@ exec --no-startup-id picom  --experimental-backend --backend glx \
 $exec_reload_display_layout
 $exec_reload_polybar
 $exec_reload_pacwall
-exec --no-startup-id xset r rate 130 100
-exec --no-startup-id xbindkeys -f \
-  /etc/system_config_files_linux/asus_rog_g14/xbindkeysrc
-
-# Niceties
-#####
-exec --no-startup-id redshift -l 44.67:-117.17
+$exec_reload_keyboard_settings
+$exec_redshift
 
 ################################################################################
 # i3 Meta
@@ -101,11 +102,12 @@ mode "$system_operation" {
 bindsym $mod+u \
   $exec_reload_display_layout; \
   $exec_reload_polybar; \
-  $exec_reload_pacwall
+  $exec_reload_pacwall; \
+  $exec_reload_keyboard_settings
 
 # Applications
 bindsym $mod+Return exec --no-startup-id rofi -show run
-bindsym $mod+a workspace $ws1; exec --no-startup-id kitty
+bindsym $mod+a workspace $ws1; exec --no-startup-id wezterm
 bindsym $mod+s workspace $ws2; exec --no-startup-id brave
 bindsym $mod+d workspace $ws3; exec --no-startup-id kitty ranger
 bindsym $mod+Shift+s workspace $ws9; exec --no-startup-id brave --new-window \
