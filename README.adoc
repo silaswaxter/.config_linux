@@ -23,17 +23,19 @@ is used. The https://pre-commit.com/[pre-commit] framework manages the git
 hook.
 
 == Installation
-. Install https://www.chezmoi.io/[`chezmoi`]
-.. Run `chezmoi init --ssh silaswaxter/.dotfiles --apply`
-. Install `pre-commit`
+. Ensure https://www.chezmoi.io/[`chezmoi`] is installed.
+. Apply the dot files by running
+  +
+  `chezmoi init --ssh silaswaxter/.dotfiles --apply`
+. Ensure `pre-commit` is installed:
 .. Install `conda` onto the system using the
    https://docs.conda.io/en/main/miniconda.html[miniconda installer].
 .. Create the conda environment by running
    `conda-env create -f ./conda-environment.yml`
 
 == Configuration decisions
-The following contain information pertaining to the decisions and non-intuititve
-portions of my configuration.
+The following contain information pertaining to the decisions and
+non-intuititve portions of my configuration.
 
 === Display scripts
 I've found its easiest to setup displays using a GUI, for example, `arandr`, 
