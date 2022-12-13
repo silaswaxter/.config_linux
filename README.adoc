@@ -1,3 +1,5 @@
+image:https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit[pre-commit, link=https://github.com/pre-commit/pre-commit]
+
 = About
 This repo tracks my user-level dot-files and explicitly installed system
 packages.
