@@ -1,5 +1,13 @@
 vim.g.mapleader = " "
 
+---- Pane navigation for Wezterm and Neovim
+vim.keymap.set({'n', 't'}, '<A-h>', '<CMD>NavigatorLeft<CR>')
+vim.keymap.set({'n', 't'}, '<A-l>', '<CMD>NavigatorRight<CR>')
+vim.keymap.set({'n', 't'}, '<A-k>', '<CMD>NavigatorUp<CR>')
+vim.keymap.set({'n', 't'}, '<A-j>', '<CMD>NavigatorDown<CR>')
+
+
+---- Language server protocol (LSP)
 vim.api.nvim_set_keymap('n', 
                         '<leader>do', 
                         '<cmd>lua vim.diagnostic.open_float()<CR>', 
@@ -13,9 +21,6 @@ vim.api.nvim_set_keymap('n',
                         '<cmd>lua vim.diagnostic.goto_next()<CR>', 
                         { noremap = true, silent = true })
 
---
--- LSP
---
 vim.api.nvim_create_autocmd('User', {
   pattern = 'LspAttached',
   desc = 'LSP actions',

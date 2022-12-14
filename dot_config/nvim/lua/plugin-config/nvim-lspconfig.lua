@@ -16,6 +16,10 @@ local lsp_defaults = {
   end
 }
 
+-- 
+-- LSP Init
+--
+
 local lspconfig = require('lspconfig')
 
 lspconfig.util.default_config = vim.tbl_deep_extend(
