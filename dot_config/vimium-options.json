@@ -1,5 +1,5 @@
 {
-  "settingsVersion": "1.67",
+  "settingsVersion": "1.67.4",
   "exclusionRules": [
     {
       "pattern": "https?://mail.google.com/*",
@@ -13,7 +13,7 @@
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Unmap\nunmap zL\nunmap zH\n\nunmap H\nunmap J\nunmap K\nunmap L\nunmap gt\nunmap gT\nunmap <c-e>\nunmap <c-y>\n\nunmap <<\nunmap >>\n\nunmap t\nunmap x\nunmap X\n\n# mappings\nmap <a-h> previousTab\nmap <a-l> nextTab\nmap <a-j> goForward\nmap <a-k> goBack\n\nmap <a-H> moveTabLeft\nmap <a-L> moveTabRight\n\nmap <a-t> createTab\nmap <a-q> removeTab\nmap <a-Q> restoreTab",
+  "keyMappings": "# Unmappings\n###################################################\nunmap zL\nunmap zH\n\nunmap H\nunmap J\nunmap K\nunmap L\nunmap gt\nunmap gT\nunmap <c-e>\nunmap <c-y>\n\nunmap <<\nunmap >>\n\nunmap t\nunmap x\nunmap X\n\n# Mappings\n###################################################\nmap <a-h> previousTab\nmap <a-l> nextTab\nmap <a-j> goForward\nmap <a-k> goBack\n\nmap <a-H> moveTabLeft\nmap <a-L> moveTabRight\n\nmap <a-t> createTab\nmap <a-q> removeTab\nmap <a-c-q> restoreTab",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "www.google.com",
@@ -21,7 +21,7 @@
   "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<",
   "regexFindMode": false,
   "ignoreKeyboardLayout": false,
-  "scrollStepSize": 60,
+  "scrollStepSize": 120,
   "smoothScroll": true,
   "grabBackFocus": true,
   "searchEngines": "w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\n\n# More examples.\n#\n# (Vimium supports search completion Wikipedia, as\n# above, and for these.)\n#\n# g: https://www.google.com/search?q=%s Google\n# l: https://www.google.com/search?q=%s&btnI I'm feeling lucky...\n# y: https://www.youtube.com/results?search_query=%s Youtube\n# gm: https://www.google.com/maps?q=%s Google maps\n# b: https://www.bing.com/search?q=%s Bing\n# d: https://duckduckgo.com/?q=%s DuckDuckGo\n# az: https://www.amazon.com/s/?field-keywords=%s Amazon\n# qw: https://www.qwant.com/?q=%s Qwant",
