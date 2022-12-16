@@ -75,17 +75,31 @@ config.keys = {
   { key = "v", mods = "ALT", action = act.SplitHorizontal{ domain =  "CurrentPaneDomain" } },
   { key = "q", mods = "ALT", action = act.CloseCurrentPane{ confirm = false } },
   -- focus
+  { key = 'p', mods = "ALT", action = act.PaneSelect{
+      alphabet = "asdfghjkl;",
+      mode = "Activate" 
+    } 
+  },
   { key = 'h', mods = "ALT", action = act.EmitEvent('ActivatePaneDirection-left') },
   { key = 'j', mods = "ALT", action = act.EmitEvent('ActivatePaneDirection-down') },
   { key = 'k', mods = "ALT", action = act.EmitEvent('ActivatePaneDirection-up') },
   { key = 'l', mods = "ALT", action = act.EmitEvent('ActivatePaneDirection-right') },
   -- move
+  { key = 'P', mods = "SHIFT|ALT", action = act.PaneSelect{
+      alphabet = "asdfghjkl;",
+      mode = "SwapWithActive" 
+    } 
+  },
+  { key = 'H', mods = "SHIFT|ALT", action = act.EmitEvent('ActivatePaneDirection-left') },
+  { key = 'J', mods = "SHIFT|ALT", action = act.EmitEvent('ActivatePaneDirection-down') },
+  { key = 'K', mods = "SHIFT|ALT", action = act.EmitEvent('ActivatePaneDirection-up') },
+  { key = 'L', mods = "SHIFT|ALT", action = act.EmitEvent('ActivatePaneDirection-right') },
   -- resize
-  { key = "H", mods = "SHIFT|ALT", action = act.AdjustPaneSize{"Left", 2} },
-  { key = "J", mods = "SHIFT|ALT", action = act.AdjustPaneSize{"Down", 2} },
-  { key = "K", mods = "SHIFT|ALT", action = act.AdjustPaneSize{"Up", 2} },
-  { key = "L", mods = "SHIFT|ALT", action = act.AdjustPaneSize{"Right", 2} },
-  { key = "Z", mods = "SHIFT|ALT", action = act.TogglePaneZoomState},
+  { key = "h", mods = "ALT|CTRL", action = act.AdjustPaneSize{"Left", 2} },
+  { key = "j", mods = "ALT|CTRL", action = act.AdjustPaneSize{"Down", 2} },
+  { key = "k", mods = "ALT|CTRL", action = act.AdjustPaneSize{"Up", 2} },
+  { key = "l", mods = "ALT|CTRL", action = act.AdjustPaneSize{"Right", 2} },
+  { key = "z", mods = "ALT|CTRL", action = act.TogglePaneZoomState},
 
 }
 
