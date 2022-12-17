@@ -28,7 +28,7 @@ set $ws6 6
 set $ws7 7
 set $ws8 8
 set $ws9 9
-set $ws0 0:0SU
+set $ws0 0
 
 # Set background to last generated pacwall image to significantly speed up the
 # command preventing a blank background from appearing. To do this, call pacwall
@@ -48,8 +48,6 @@ set $exec_reload_keyboard_settings \
     /etc/system_config_files_linux/asus_rog_g14/xbindkeysrc
 set $exec_redshift \
   exec --no-startup-id redshift -l 44.67:-117.17
-
-set $exec_lock_screen exec xlock -mode space
 
 ################################################################################
 # i3 Autostart 
@@ -85,10 +83,10 @@ floating_modifier $mod
 set $system_operation (h)ibernate, (e)xit, (r)eboot, (s)uspend, (S)hutdown
 bindsym $mod+Delete mode "$system_operation"
 mode "$system_operation" {
-  bindsym h $exec_lock_screen & systemctl hibernate, mode "default"
+  bindsym h systemctl hibernate, mode "default"
   bindsym e exec i3-msg exit, mode "default"
   bindsym r exec shutdown -r now, mode "default"
-  bindsym s $exec_lock_screen & systemctl suspend, mode "default"
+  bindsym s systemctl suspend, mode "default"
   bindsym Shift+s exec shutdown now, mode "default"
   
   # exit system mode: "Enter" or "Escape
@@ -109,7 +107,7 @@ bindsym $mod+u \
 bindsym $mod+Return exec --no-startup-id rofi -show run
 bindsym $mod+a workspace $ws1; exec --no-startup-id wezterm
 bindsym $mod+s workspace $ws2; exec --no-startup-id brave
-bindsym $mod+d workspace $ws3; exec --no-startup-id kitty ranger
+bindsym $mod+d workspace $ws3; exec --no-startup-id wezterm ranger
 bindsym $mod+Shift+s workspace $ws9; exec --no-startup-id brave --new-window \
   open.spotify.com
 
@@ -122,7 +120,7 @@ bindsym $mod+Shift+s workspace $ws9; exec --no-startup-id brave --new-window \
 # before starting the application. **NOT** using the application class to map 
 # because terminal applications, for example 'ranger', are mapped to different
 # workspaces than the terminal itself.
-for_window [class="kitty"] layout tabbed
+#for_window [class="wezterm"] layout tabbed
 for_window [class="Brave-browser"] layout tabbed
 for_window [class="Zathura"] layout tabbed
 

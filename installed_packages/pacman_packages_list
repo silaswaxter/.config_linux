@@ -43,10 +43,12 @@ net-tools
 network-manager-applet
 networkmanager
 nm-connection-editor
+noto-fonts-emoji
 npm
 numlockx
 ocl-icd
 openssh
+otf-latinmodern-math
 pacman-contrib
 patch
 picom
@@ -65,6 +67,7 @@ rpm-tools
 screengrab
 sudo
 texinfo
+tmux
 tree
 ttf-firacode-nerd
 ttf-liberation
@@ -77,7 +80,6 @@ wget
 xbindkeys
 xclip
 xdg-utils
-xlockmore
 xorg-server
 xorg-xinit
 zathura
