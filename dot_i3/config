@@ -83,10 +83,10 @@ floating_modifier $mod
 set $system_operation (h)ibernate, (e)xit, (r)eboot, (s)uspend, (S)hutdown
 bindsym $mod+Delete mode "$system_operation"
 mode "$system_operation" {
-  bindsym h systemctl hibernate, mode "default"
+  bindsym h exec systemctl hibernate, mode "default"
   bindsym e exec i3-msg exit, mode "default"
   bindsym r exec shutdown -r now, mode "default"
-  bindsym s systemctl suspend, mode "default"
+  bindsym s exec systemctl suspend, mode "default"
   bindsym Shift+s exec shutdown now, mode "default"
   
   # exit system mode: "Enter" or "Escape
