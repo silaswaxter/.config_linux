@@ -66,8 +66,9 @@ require("packer").startup(function(use)
       'hrsh7th/cmp-nvim-lsp', -- (optional) source
       'hrsh7th/cmp-buffer', -- (optional) source
       'hrsh7th/cmp-path', -- (optional) source
-      'hrsh7th/cmp-cmdline', -- (optional) source
-      'saadparwaiz1/cmp_luasnip' -- (optional) source; depends on LuaSnip
+      'hrsh7th/cmp-cmdline', -- (optional) source; sources cmp-path & cmp-buffer
+      'saadparwaiz1/cmp_luasnip', -- (optional) source; depends on LuaSnip
+      'hrsh7th/cmp-calc' -- (optional) source
     }
   })
   use({'L3MON4D3/LuaSnip'})
