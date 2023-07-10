@@ -1,12 +1,12 @@
 -- ABOUT: Set neovim core options
-
+--------------------------------------------------------------------------------
 vim.g.mapleader = ' '
 
 -- Colorize
 vim.o.termguicolors = true
 vim.cmd [[colorscheme gruvbox]]
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, 'Normal', {bg = 'none'})
+vim.api.nvim_set_hl(0, 'NormalFloat', {bg = 'none'})
 
 -- Hybrid relative line numbers:
 vim.o.relativenumber = true
@@ -14,7 +14,7 @@ vim.o.number = true
 
 vim.o.showcmd = true -- show command keystrokes in bottom right
 
-vim.o.colorcolumn = "80"
+vim.o.colorcolumn = '80'
 vim.o.signcolumn = 'auto'
 vim.o.scrolloff = 12
 
@@ -25,7 +25,7 @@ vim.o.shiftwidth = 2
 vim.o.tabstop = 2
 
 vim.o.spell = true
-vim.o.clipboard = "unnamedplus"
+vim.o.clipboard = 'unnamedplus'
 
 vim.o.mouse = 'a' -- enable mouse for all modes
 
@@ -41,7 +41,7 @@ vim.o.undofile = true
 
 -- highlight text on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight',
-  { clear = true })
+                                                    {clear = true})
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function() vim.highlight.on_yank() end,
   group = highlight_group,
