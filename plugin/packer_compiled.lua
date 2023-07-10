@@ -114,6 +114,11 @@ _G.packer_plugins = {
     path = "/home/silas/.local/share/nvim/site/pack/packer/start/fidget.nvim",
     url = "https://github.com/j-hui/fidget.nvim"
   },
+  ["formatter.nvim"] = {
+    loaded = true,
+    path = "/home/silas/.local/share/nvim/site/pack/packer/start/formatter.nvim",
+    url = "https://github.com/mhartington/formatter.nvim"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/silas/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
@@ -221,7 +226,7 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim', 'inkscape-figure-manager.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'inkscape-figure-manager.nvim', 'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 
