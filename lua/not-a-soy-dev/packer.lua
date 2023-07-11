@@ -68,8 +68,8 @@ require('packer').startup(function(use)
   })
   use({'L3MON4D3/LuaSnip'})
 
-  -- Formatter:
-  use({'mhartington/formatter.nvim'}) -- works with mason
+  -- Formatter/Linter:
+  use({'jose-elias-alvarez/null-ls.nvim', requires = {'nvim-lua/plenary.nvim'}})
 
   -- Git-related:
   use('lewis6991/gitsigns.nvim')
