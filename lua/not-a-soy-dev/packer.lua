@@ -5,12 +5,12 @@
 -- Load plugins:
 require('packer').startup(function(use)
   -- Packer itself:
-  use('wbthomason/packer.nvim')
+  use({'wbthomason/packer.nvim'})
 
   -- Theming:
-  use('ellisonleao/gruvbox.nvim')
-  use('nvim-lualine/lualine.nvim')
-  use('lukas-reineke/indent-blankline.nvim')
+  use({'ellisonleao/gruvbox.nvim'})
+  use({'nvim-lualine/lualine.nvim'})
+  use({'lukas-reineke/indent-blankline.nvim'})
 
   -- Navigation:
   use({
@@ -72,7 +72,7 @@ require('packer').startup(function(use)
   use({'jose-elias-alvarez/null-ls.nvim', requires = {'nvim-lua/plenary.nvim'}})
 
   -- Git-related:
-  use('lewis6991/gitsigns.nvim')
+  use({'lewis6991/gitsigns.nvim'})
   -- intentionally not using a git-integrating plugin because I want to practice
   -- and become very competent at CLI git before I experiment with abstractions.
 
@@ -90,9 +90,18 @@ require('packer').startup(function(use)
   })
 
   -- Misc:
-  use('mbbill/undotree')
+  use({'mbbill/undotree'})
   -- adjust `expandtab`, `shiftwidth`, etc based on file/directory context
-  use('tpope/vim-sleuth')
+  use({'tpope/vim-sleuth'})
+  -- add file-type based commenting commands
+  use({'numToStr/Comment.nvim'})
+  -- improve my vim movements
+  use({
+    'm4xshen/hardtime.nvim',
+    config = function ()
+      require('hardtime').setup()
+    end
+  })
 
   -- Finish Setup:
   -- Sync packer after boot-strapping.
