@@ -19,8 +19,7 @@ for _, lsp_server_name in ipairs(mason_lspconfig.get_installed_servers()) do
       -- advertise additional capabilities offered by cmp_nvim_lsp
       capabilities = cmp_nvim_lsp.default_capabilities()
     })
-    -- default handler
-  else
+  else -- default handler
     lspconfig[lsp_server_name].setup({
       -- advertise additional capabilities offered by cmp_nvim_lsp
       capabilities = cmp_nvim_lsp.default_capabilities()
