@@ -1,3 +1,3 @@
-local indent_blankline = require('indent_blankline')
+local indent_blankline = require('ibl')
 
-indent_blankline.setup({show_end_of_line = true})
+indent_blankline.setup({})

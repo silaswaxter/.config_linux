@@ -1,7 +1,7 @@
 require('nvim-treesitter.configs').setup {
   ensure_installed = {
     'c', 'cpp', 'lua', 'python', 'vimdoc', 'bash', 'gitcommit', 'gitignore',
-    'gitattributes', 'make', 'toml', 'yaml', 'markdown_inline'
+    'gitattributes', 'make', 'toml', 'yaml', 'markdown_inline', 'starlark'
   },
   highlight = {enable = true, additional_vim_regex_highlighting = false},
   incremental_selection = {enable = false}

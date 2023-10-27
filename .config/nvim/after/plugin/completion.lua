@@ -25,7 +25,7 @@ end
 cmp.setup({
   sources = {
     {name = 'nvim_lsp'}, {name = 'luasnip'}, {name = 'buffer'}, {name = 'path'},
-    {name = 'nvim_lsp_signature_help'}, {name = 'calc'}
+    {name = 'nvim_lsp_signature_help'}, {name = 'calc'}, {name = 'bazel'}
   },
   snippet = {expand = function(args) luasnip.lsp_expand(args.body) end},
   mapping = completion_mappings

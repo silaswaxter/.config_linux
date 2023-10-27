@@ -43,7 +43,7 @@ require('packer').startup(function(use)
   -- collection of configurations for built-in LSP client
   use({'neovim/nvim-lspconfig'})
   -- graphic that displays LSP status
-  use({'j-hui/fidget.nvim'})
+  use {'j-hui/fidget.nvim', tag = 'legacy'}
   -- external tooling (LSP, DAP, linter, formatter) installer
   use({
     'williamboman/mason.nvim',
@@ -63,7 +63,8 @@ require('packer').startup(function(use)
       'hrsh7th/cmp-path', -- (optional) source
       'hrsh7th/cmp-cmdline', -- (optional) source; sources cmp-path & cmp-buffer
       'saadparwaiz1/cmp_luasnip', -- (optional) source; depends on LuaSnip
-      'hrsh7th/cmp-calc' -- (optional) source
+      'hrsh7th/cmp-calc', -- (optional) source
+      'alexander-born/cmp-bazel' -- (optional) source
     }
   })
   use({'L3MON4D3/LuaSnip'})
@@ -76,6 +77,9 @@ require('packer').startup(function(use)
   -- intentionally not using a git-integrating plugin because I want to practice
   -- and become very competent at CLI git before I experiment with abstractions.
 
+  -- Compiler-Explorer:
+  use({'p00f/godbolt.nvim'})
+
   -- Writing documentation:
   use({
     'iamcco/markdown-preview.nvim',
@@ -83,26 +87,29 @@ require('packer').startup(function(use)
     setup = function() vim.g.mkdp_filetypes = {'markdown'} end,
     ft = {'markdown'}
   })
-  use({
-    'silaswaxter/inkscape-figure-manager.nvim',
-    ft = {'markdown'},
-    rocks = {'inotify', 'luaposix'}
-  })
+  -- use({
+  --   'silaswaxter/inkscape-figure-manager.nvim',
+  --   ft = {'markdown'},
+  --   rocks = {'inotify', 'luaposix'}
+  -- })
 
   -- Misc:
   use({'mbbill/undotree'})
-  -- adjust `expandtab`, `shiftwidth`, etc based on file/directory context
-  use({'tpope/vim-sleuth'})
+  use {
+    'nmac427/guess-indent.nvim',
+    config = function() require('guess-indent').setup {} end
+  }
   -- add file-type based commenting commands
   use({'numToStr/Comment.nvim'})
   -- improve my vim movements
   use({
     'm4xshen/hardtime.nvim',
-    config = function ()
-      require('hardtime').setup()
-    end
+    config = function() require('hardtime').setup() end
   })
-
+  use {
+    'johmsalas/text-case.nvim',
+    config = function() require('textcase').setup {} end
+  }
   -- Finish Setup:
   -- Sync packer after boot-strapping.
   -- (MUST BE DONE LAST IN THIS FUNCTION.)
