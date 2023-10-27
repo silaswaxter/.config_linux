@@ -109,11 +109,15 @@ bindsym $mod+a workspace $ws1; exec --no-startup-id kitty
 
 # Browser and frequent web apps
 bindsym $mod+s workspace $ws2; exec --no-startup-id brave
-set $browser_apps (c)anvas, (d)iscord, (s)potify, (m)essenger
+set $browser_apps (c)anvas, (o)utlook, (d)iscord, (s)potify, (m)essenger, \
+(g)oogle C++ guide
 bindsym $mod+Shift+s mode "$browser_apps"
 mode "$browser_apps" {
   bindsym c workspace $ws0; \
     exec --no-startup-id brave --new-window canvas.oregonstate.edu, \
+    mode "default"
+  bindsym o workspace $ws0; \
+    exec --no-startup-id brave --new-window outlook.office.com/mail, \
     mode "default"
   bindsym d workspace $ws8; \
     exec --no-startup-id brave --new-window discord.com/app, \
@@ -123,6 +127,9 @@ mode "$browser_apps" {
     mode "default"
   bindsym m workspace $ws8; \
     exec --no-startup-id brave --new-window messenger.com, \
+    mode "default"
+  bindsym g workspace $ws4; \
+    exec --no-startup-id brave --new-window https://google.github.io/styleguide/cppguide.html, \
     mode "default"
 
   # exit mode: "Enter" or "Escape
