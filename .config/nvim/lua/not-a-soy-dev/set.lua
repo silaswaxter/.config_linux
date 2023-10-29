@@ -14,7 +14,17 @@ vim.o.number = true
 
 vim.o.showcmd = true -- show command keystrokes in bottom right
 
-vim.o.colorcolumn = '80'
+-- set the colorcolumn as 80 by default and change it for filetypes that are 
+-- exceptions
+vim.o.colorcolumn = 80
+local dynamic_color_col_group = vim.api
+                                    .nvim_create_augroup('DynamicColorColumn', {})
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = {"*.py"},
+  command = "set colorcolumn=88",
+  group = dynamic_color_col_group
+})
+
 vim.o.signcolumn = 'auto'
 vim.o.scrolloff = 12
 
