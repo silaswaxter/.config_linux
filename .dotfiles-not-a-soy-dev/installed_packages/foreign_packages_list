@@ -1,9 +1,15 @@
 brave-bin
 cura-bin
+expresslrs-configurator
 htop-vim
+ltspice
 ncurses5-compat-libs
 nvim-packer-git
 pacwall-git
+python2
+snapd
 timg
 ttf-symbola
+yay
+yay-debug
 zoom
