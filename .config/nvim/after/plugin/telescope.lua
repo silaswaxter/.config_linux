@@ -1,4 +1,8 @@
-require('telescope').setup({pickers = {find_files = {hidden = true}}})
+require('telescope').setup({
+  pickers = {find_files = {hidden = true}},
+  extensions = {['ui-select'] = {require('telescope.themes').get_dropdown {}}},
+  defaults = {file_ignore_patterns = {'.git'}}
+})
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
@@ -16,3 +20,6 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string)
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep)
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics)
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags)
+
+-- To get ui-select loaded and working with telescope
+require('telescope').load_extension('ui-select')

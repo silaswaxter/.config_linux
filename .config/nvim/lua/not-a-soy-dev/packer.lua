@@ -23,6 +23,8 @@ require('packer').startup(function(use)
     run = 'make',
     cond = (vim.fn.executable('make') == 1)
   })
+  -- let core neovim populate telescope for `vim.ui.select`
+  use {'nvim-telescope/telescope-ui-select.nvim'}
   -- TODO: add harpoon
 
   -- Treesitter
@@ -78,7 +80,7 @@ require('packer').startup(function(use)
   -- and become very competent at CLI git before I experiment with abstractions.
 
   -- Compiler-Explorer:
-  use({'p00f/godbolt.nvim'})
+  use({'krady21/compiler-explorer.nvim'})
 
   -- Writing documentation:
   use({

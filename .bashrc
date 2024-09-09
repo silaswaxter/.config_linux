@@ -15,6 +15,9 @@ alias ll='ls -la'
 source ~/.chezmoi-completion.bash
 source ~/.bash-completion-arduino-cli.bash
 
+## Set Environment Variables
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk/
+
 #-----
 # GENERATED CONTENT (START)
 #-----
@@ -34,3 +37,5 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
 fi
 
 . "$HOME/.cargo/env"
+
+export PATH="/home/silas/.local/bin/STM32CubeProgrammer/bin:$PATH"
